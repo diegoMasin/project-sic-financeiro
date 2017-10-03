@@ -26,7 +26,7 @@ SECRET_KEY = '^p4wvwv!c8lh_2=458gt6nf%s-0kj121(-)s2*$5bq90+#q@@c'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['sicfinanceiro.herokuapp.com']
+ALLOWED_HOSTS = []
 
 
 # Application definition
