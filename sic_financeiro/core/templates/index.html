@@ -23,9 +23,12 @@
     <div class="topbar">
         <div class="topbar-left">
             <div class="text-center">
-                <a href="index.html" class="logo">
+                <a href="{% url namespace %}" class="logo">
 {#                    <i class="mdi mdi-radar"></i> <span>Sic</span>#}
-                    <img src="{% static 'v1/global/assets/images/sic_logo.png' %}" alt="Sic">
+{#                    <img src="{% static 'v1/global/assets/images/sic_logo.png' %}" alt="Sic">#}
+                    <i class="mdi">
+                        <img src="{% static 'v1/global/assets/images/sic_logo_seta.png' %}">
+                    </i> <span><img src="{% static 'v1/global/assets/images/sic_logo_nome.png' %}"></span>
                 </a>
             </div>
         </div>
@@ -67,8 +70,9 @@
         <div class="sidebar-inner slimscrollleft">
             <div id="sidebar-menu">
                 <ul>
+                    <li class="menu-title">Menu</li>
                     <li>
-                        <a href="{% url 'home' %}" class="waves-effect waves-primary">
+                        <a href="{% url namespace %}" class="waves-effect waves-primary">
                             <i class="ti-home"></i><span> Painel Principal </span>
                         </a>
                     </li>
@@ -86,7 +90,7 @@
 
             </div>
             <footer class="footer">
-                2017 - 2018 © Sic <span class="hide-phone">- Sistema de Controle Financeiro</span>
+                2017 - 2018 © Sic <span class="hide-phone">- Sistema de Controle Financeiro Familiar</span>
             </footer>
         </div>
     </div>
