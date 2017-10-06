@@ -12,6 +12,9 @@ https://docs.djangoproject.com/en/1.11/ref/settings/
 
 import os
 
+import dj_database_url
+from decouple import config
+
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 DATA_DIR = os.path.dirname(os.path.dirname(__file__))
@@ -21,12 +24,12 @@ DATA_DIR = os.path.dirname(os.path.dirname(__file__))
 # See https://docs.djangoproject.com/en/1.11/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = '^p4wvwv!c8lh_2=458gt6nf%s-0kj121(-)s2*$5bq90+#q@@c'
+SECRET_KEY = config('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = config('DEBUG', default=False, cast=bool)
 
-ALLOWED_HOSTS = ['sic-financeiro.herokuapp.com', 'localhost']
+ALLOWED_HOSTS = [config('LOCAL_URL', default='localhost')]
 
 
 # Application definition
@@ -76,19 +79,10 @@ WSGI_APPLICATION = 'sic_financeiro.wsgi.application'
 # https://docs.djangoproject.com/en/1.11/ref/settings/#databases
 
 DATABASES = {
-    # 'default': {
-    #     'ENGINE': 'django.db.backends.sqlite3',
-    #     'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
-    # },
-
-    'default': {
-        'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'sicfinanceiro',
-        'USER': 'postgres',
-        'PASSWORD': 'postgres',
-        'HOST': '127.0.0.1',
-        'PORT': '5432',
-    }
+    'default': dj_database_url.config(
+        default=config('DATABASE_URL', default='postgres://postgres:postgres@localhost:5432/sic_financeiro'),
+        conn_max_age=600
+    )
 }
 
 DATABASES['default']['OPTIONS'] = {'options': '-c search_path=sic'}
