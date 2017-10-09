@@ -62,7 +62,8 @@ Obs: Instale o Python no Seguinte caminho para facilitar os comandos: C:\Python3
 3. o Gitkraken para manipular o git(https://www.gitkraken.com/download); 
 4. o Pycharm para o desenvolvimento como IDE(https://www.jetbrains.com/pycharm/download/); 
 5. o PgAdmin para o uso do banco de dados com postgres(https://ftp.postgresql.org/pub/pgadmin/pgadmin4/v2.0/windows/pgadmin4-2.0-x86.exe);
-6. um kernel de Linux(Cygwin ou Power Shell) para que em casos extremos seja possível resolver um problema insurgente(https://www.cygwin.com/);
+6. o Postegres para o Banco de dados(https://www.enterprisedb.com/downloads/postgres-postgresql-downloads#windows);
+7. um kernel de Linux(Cygwin ou Power Shell) para que em casos extremos seja possível resolver um problema insurgente(https://www.cygwin.com/);
 
 # Clonando e Configurando(siga os passos em todos os detalhes):
 Obs: Muito do que foi relatado para o caso de ser linux o SO, aqui não funcionará, por mais que estejamos usando um simulador de kernel do linux, devemos instalar e configurar no próprio Windows. Como o caso da virtualenv(máquina virtual de desenvolvimento), precisaremos instalar no windows diretamente sem usar o Cygwin ou Power Shell.
@@ -90,4 +91,6 @@ Obs: Dentro do python para windows está o gerenciador de instalação que usare
  - Acesse o site: https://www.miniwebtool.com/django-secret-key-generator/
  - Após gerar uma SECRET_KEY, dentro do arquivo texto ".env" escreva da forma que fique como no exemplo a seguir: SECRET_KEY=^cu!f3@!yuu2$%4u8)zw!$o6_xc-@y-l(fpl#6o0rf-tz$6gt4
  - Pronto!
+11. Abra o PG admin 3 e crie/configure um server com um banco de dados de develop para suporte do projeto:
+ - 
 10. Configure o pycharm(complicado se nao souber) para executar o projeto ou use: python manage.py runserver
