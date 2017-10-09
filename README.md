@@ -63,6 +63,7 @@ Obs: Instale o Python no Seguinte caminho para facilitar os comandos: C:\Python3
 4. o Pycharm para o desenvolvimento como IDE(https://www.jetbrains.com/pycharm/download/); 
 5. o PgAdmin para o uso do banco de dados com postgres(https://ftp.postgresql.org/pub/pgadmin/pgadmin4/v2.0/windows/pgadmin4-2.0-x86.exe);
 6. o Postegres para o Banco de dados(https://www.enterprisedb.com/downloads/postgres-postgresql-downloads#windows);
+Obs: na instalação, quando pedir a senha do superusuário postgres, coloque a senha postgres, seguindo assim o padrão de acesso ao banco já definido no código de develop.
 7. um kernel de Linux(Cygwin ou Power Shell) para que em casos extremos seja possível resolver um problema insurgente(https://www.cygwin.com/);
 
 # Clonando e Configurando(siga os passos em todos os detalhes):
@@ -90,7 +91,21 @@ Obs: Dentro do python para windows está o gerenciador de instalação que usare
  - Crie um arquivo dentro da pasta do repositório de nome ".env", no mesmo nível de arquivos como .gitignore
  - Acesse o site: https://www.miniwebtool.com/django-secret-key-generator/
  - Após gerar uma SECRET_KEY, dentro do arquivo texto ".env" escreva da forma que fique como no exemplo a seguir: SECRET_KEY=^cu!f3@!yuu2$%4u8)zw!$o6_xc-@y-l(fpl#6o0rf-tz$6gt4
+ - Escreva outra linha: DEBUG=TRUE
  - Pronto!
-11. Abra o PG admin 3 e crie/configure um server com um banco de dados de develop para suporte do projeto:
- - 
-10. Configure o pycharm(complicado se nao souber) para executar o projeto ou use: python manage.py runserver
+11. Abra o PG admin 3 e crie/configure um server com um banco de dados e um schema tal qual o projeto requer:
+ - Crie o Server(se nao tiver criado na instalação do postgres. Ponha o nome de localhost.)
+ - Crie o banco de dados com o nome de "sic_financeiro"
+ - Crie o schema com o nome de "sic"
+12. Pelo prompt de comandos, e com a virtualenv ativada, escreva: python manage.py migrate 
+13. Configure o pycharm(lembrar de criar o interpreter apontando para o python da virtualenv) para executar o projeto ou use: python manage.py runserver
+
+
+# Configurando o Heroku para uso no terminal
+1- Navegue pelo terminal até chegar na pasta principal do repositório git;
+2- Certifique-se de que está na branch master(git checkout master);
+3- Certifique-se de que já exista o remoto do github(git remote);
+4- Adicione o reposítório remoto do heroku(git remote add heroku https_da_sua_app_no_heroku);
+5- Faça o login(heroku login);
+6- Logado no heroku o comando de deploy é o seguinte: git push heroku master;
+7- Para executar a migrate para o banco de dados use: heroku run python manage.py migrate(lembre-se: esteja dentro do branch master do seu projeto);
