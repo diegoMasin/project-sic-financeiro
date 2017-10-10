@@ -84,8 +84,8 @@ DATABASES = {
         conn_max_age=600
     )
 }
-# Comentado por causa de ajustes no banco de produção
-# DATABASES['default']['OPTIONS'] = {'options': '-c search_path=sic'}
+# Tirar o comentario quando estiver desenvolvendo localmente
+DATABASES['default']['OPTIONS'] = {'options': '-c search_path=sic'}
 
 # Password validation
 # https://docs.djangoproject.com/en/1.11/ref/settings/#auth-password-validators
