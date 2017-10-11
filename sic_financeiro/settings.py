@@ -59,7 +59,7 @@ ROOT_URLCONF = 'sic_financeiro.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [os.path.join(BASE_DIR, 'sic_financeiro', 'templates'), ],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [

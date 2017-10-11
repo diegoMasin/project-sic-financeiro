@@ -1,9 +1,8 @@
 from django.shortcuts import render
 
 titulo_pagina = 'Home'
-namespace = 'index'
+namespace = 'pagina_inicial'
 menu = 'home'
-
 context = {
     'titulo_pagina': titulo_pagina,
     'namespace': namespace,
@@ -11,5 +10,5 @@ context = {
 }
 
 
-def home(request):
-    return render(request, 'index.html', context)
+def pagina_inicial(request):
+    return render(request, '{0}/index.html'.format(namespace), context)
