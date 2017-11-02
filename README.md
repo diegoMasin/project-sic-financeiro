@@ -101,7 +101,8 @@ Obs: Dentro do python para windows está o gerenciador de instalação que usare
 13. Configure o pycharm(lembrar de criar o interpreter apontando para o python da virtualenv) para executar o projeto ou use: python manage.py runserver
 
 
-# Configurando o Heroku para uso no terminal
+## Configurando o Heroku para uso no terminal
+OBS: antes de seguir estes passos instale o Heroku Cli(tem versões Linux e Windows)
 1- Navegue pelo terminal até chegar na pasta principal do repositório git;
 2- Certifique-se de que está na branch master(git checkout master);
 3- Certifique-se de que já exista o remoto do github(git remote);
