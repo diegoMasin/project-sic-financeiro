@@ -30,7 +30,20 @@
     <div class="content-page">
         <div class="content">
             <div class="container-fluid">
+
+                <div class="row">
+                    <div class="col-sm-12">
+                        <div class="page-title-box">
+                            <h4 class="page-title text-white">
+                                {% block titulo_pagina %}{% endblock titulo_pagina %}
+                            </h4>
+                            <div class="clearfix"></div>
+                        </div>
+                    </div>
+                </div>
+
                 {% block content %}{% endblock content %}
+
             </div>
             <footer class="footer">
                 2017 - 2018 © Sic <span class="hide-phone">- Sistema de Controle Financeiro Familiar</span>

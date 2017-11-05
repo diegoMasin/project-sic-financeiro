@@ -1,4 +1,4 @@
-titulo_pagina_home = 'Home'
+titulo_pagina_home = 'Painel de Controle'
 titulo_pagina_contas = 'Contas'
 
 url_home = 'pagina_inicial'
