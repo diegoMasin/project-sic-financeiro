@@ -14,6 +14,7 @@
     <link href="{% static 'v1/global/assets/css/bootstrap.min.css' %}" rel="stylesheet" type="text/css">
     <link href="{% static 'v1/global/assets/css/icons.css' %}" rel="stylesheet" type="text/css">
     <link href="{% static 'v1/global/assets/css/style.css' %}" rel="stylesheet" type="text/css">
+    <link href="{% static 'v1/global/lib/plugins/custombox/dist/custombox.min.css' %}" rel="stylesheet">
 
     {% block css %}{% endblock css %}
     {% block css_specific %}{% endblock css_specific %}
@@ -37,6 +38,9 @@
         </div>
     </div>
 </div>
+
+<!-- MODALS -->
+{% include 'internas/partials/modals/criar_conta.html' %}
 
 <script>
     var resizefunc = [];
