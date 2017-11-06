@@ -1,10 +1,19 @@
 # -*- coding: utf-8 -*-
-from django.forms import ModelForm
 from django import forms
 from django.contrib.auth.models import User
 
 
 class UserModelForm(forms.ModelForm):
+    def save(self, commit=True):
+        user = super(UserModelForm, self).save(commit=False)
+        user.set_password(self.cleaned_data['password'])
+
+        if commit:
+            user.save()
+
+        return user
+
+
     class Meta:
         model = User
         fields = ['username', 'first_name', 'last_name', 'email', 'password']
@@ -40,22 +49,4 @@ class UserModelForm(forms.ModelForm):
                 'maxlength': 50
             }),
 
-        }
-
-        erros_messages = {
-            'first_name': {
-                'required': 'Este campo é obrigatório.'
-            },
-            'last_name': {
-                'required': 'Este campo é obrigatório.'
-            },
-            'email': {
-                'required': 'Este campo é obrigatório.'
-            },
-            'username': {
-                'required': 'Este campo é obrigatório.'
-            },
-            'password': {
-                'required': 'Este campo é obrigatório.'
-            }
         }
