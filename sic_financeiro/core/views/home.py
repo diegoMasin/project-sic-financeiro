@@ -1,14 +1,6 @@
 from django.shortcuts import render
-
-titulo_pagina = 'Home'
-namespace = 'pagina_inicial'
-menu = 'home'
-context = {
-    'titulo_pagina': titulo_pagina,
-    'namespace': namespace,
-    'menu': menu,
-}
+from sic_financeiro.core.views.context_urls import context_urls as carregador_global
 
 
 def pagina_inicial(request):
-    return render(request, '{0}/index.html'.format(namespace), context)
+    return render(request, '{0}/index.html'.format(carregador_global.path_home), carregador_global.context)

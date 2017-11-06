@@ -1,0 +1,18 @@
+{% extends 'contas/layout.html' %}
+
+{% load core_tags %}
+{% load staticfiles %}
+
+{% block titulo_pagina %}
+    {{ titulo_pagina_contas }}
+{% endblock titulo_pagina %}
+
+{% block content %}
+    <div class="row">
+        <div class="col-12">
+            <div class="card-box text-white">
+            {% include 'contas/partials/tabela.html' %}
+            </div>
+        </div>
+    </div>
+{% endblock content %}
