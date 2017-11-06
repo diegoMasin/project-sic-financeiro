@@ -43,6 +43,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'django.contrib.humanize',
     'sic_financeiro.core',
+    'sic_financeiro.usuarios',
 ]
 
 MIDDLEWARE = [

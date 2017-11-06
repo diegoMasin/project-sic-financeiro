@@ -1,0 +1,55 @@
+{% extends 'login/layout.html' %}
+
+{% load core_tags %}
+{% load staticfiles %}
+
+{% block content_login %}
+    <form class="form-horizontal m-t-20" action="">
+
+        <div class="form-group row">
+            <div class="col-12">
+                <div class="input-group">
+                    <span class="input-group-addon"><i class="mdi mdi-account"></i></span>
+                    <input class="form-control" type="text" required="" placeholder="Username">
+                </div>
+            </div>
+        </div>
+
+        <div class="form-group row">
+            <div class="col-12">
+                <div class="input-group">
+                    <span class="input-group-addon"><i class="mdi mdi-radar"></i></span>
+                    <input class="form-control" type="password" required="" placeholder="Password">
+                </div>
+            </div>
+        </div>
+
+        <div class="form-group row">
+            <div class="col-12">
+                <div class="checkbox checkbox-primary">
+                    <input id="checkbox-signup" type="checkbox">
+                    <label for="checkbox-signup">
+                        Lembre-me
+                    </label>
+                </div>
+
+            </div>
+        </div>
+
+        <div class="form-group text-right m-t-20">
+            <div class="col-xs-12">
+                <button class="btn btn-primary btn-custom w-md waves-effect waves-light" type="submit">Entrar
+                </button>
+            </div>
+        </div>
+
+        <div class="form-group row m-t-30">
+            <div class="col-sm-7">
+                <a href="#" class="text-muted"><i class="fa fa-lock m-r-5"></i> Esqueceu sua Senha?</a>
+            </div>
+            <div class="col-sm-5 text-right">
+                <a href="{% url url_signup %}" class="text-muted">Criar Conta</a>
+            </div>
+        </div>
+    </form>
+{% endblock content_login %}
