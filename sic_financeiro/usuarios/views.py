@@ -17,3 +17,7 @@ def signup(request):
 
 def login(request):
     return render(request, '{0}/login.html'.format(context_global.path_login), context_global.context)
+
+
+def termo(request):
+    return render(request, '{0}/termo_de_uso.html'.format(context_global.path_login), context_global.context)

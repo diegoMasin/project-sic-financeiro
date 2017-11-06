@@ -3,6 +3,7 @@ titulo_pagina_contas = 'Contas'
 
 url_login = 'usuario_login'
 url_signup = 'usuario_signup'
+url_termo = 'usuario_termo'
 url_home = 'pagina_inicial'
 url_contas_listar = 'contas_listar'
 
@@ -16,6 +17,7 @@ context = {
 
     'url_login': url_login,
     'url_signup': url_signup,
+    'url_termo': url_termo,
     'url_home': url_home,
     'url_contas_listar': url_contas_listar,
 
