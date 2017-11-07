@@ -2,6 +2,7 @@ titulo_pagina_home = 'Painel de Controle'
 titulo_pagina_contas = 'Contas'
 
 url_login = 'usuario_login'
+url_logout = 'usuario_logout'
 url_signup = 'usuario_signup'
 url_termo = 'usuario_termo'
 url_home = 'pagina_inicial'
@@ -16,6 +17,7 @@ context = {
     'titulo_pagina_contas': titulo_pagina_contas,
 
     'url_login': url_login,
+    'logout': url_logout,
     'url_signup': url_signup,
     'url_termo': url_termo,
     'url_home': url_home,
