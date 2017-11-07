@@ -4,12 +4,17 @@
         <div id="sidebar-menu">
             <ul>
                 <li class="menu-title">Menu</li>
-                <li>
-                    <a href="{% url namespace %}" class="waves-effect waves-primary">
-                        <i class="ti-home"></i>
+                <li class="active">
+                    <a href="{% url url_home %}" class="waves-effect waves-primary active">
+                        <i class="fa fa-home"></i>
                         <span> Dashboard </span>
                     </a>
                 </li>
+                {% include 'internas/partials/contas_menu.html' %}
+                {% include 'internas/partials/receitas_menu.html' %}
+                {% include 'internas/partials/despesas_menu.html' %}
+                {% include 'internas/partials/cartao_credito_menu.html' %}
+                {% include 'internas/partials/transferencias_menu.html' %}
             </ul>
             <div class="clearfix"></div>
         </div>
