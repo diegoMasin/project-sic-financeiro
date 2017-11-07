@@ -17,7 +17,7 @@ context = {
     'titulo_pagina_contas': titulo_pagina_contas,
 
     'url_login': url_login,
-    'logout': url_logout,
+    'url_logout': url_logout,
     'url_signup': url_signup,
     'url_termo': url_termo,
     'url_home': url_home,

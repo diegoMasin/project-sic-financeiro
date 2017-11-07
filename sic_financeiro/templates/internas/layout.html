@@ -41,7 +41,7 @@
                         </div>
                     </div>
                 </div>
-
+                {% include 'internas/partials/messages.html' %}
                 {% block content %}{% endblock content %}
 
             </div>
@@ -87,15 +87,15 @@
 <!-- Page js  -->
 <script src="{% static 'v1/global/assets/pages/jquery.dashboard.js' %}"></script>
 
+<!-- Notification js -->
+<script src="{% static 'v1/global/lib/plugins/notifyjs/dist/notify.min.js' %}"></script>
+<script src="{% static 'v1/global/lib/plugins/notifications/notify-metro.js' %}"></script>
+
 <!-- Custom main Js -->
 <script src="{% static 'v1/global/assets/js/jquery.core.js' %}"></script>
 <script src="{% static 'v1/global/assets/js/jquery.app.js' %}"></script>
 <script src="{% static 'v1/global/assets/js/jquery.custom.global.js' %}"></script>
 <script src="{% static 'v1/global/assets/js/crudp.js' %}"></script>
-
-<!-- Notification js -->
-<script src="{% static 'v1/global/lib/plugins/notifyjs/dist/notify.min.js' %}"></script>
-<script src="{% static 'v1/global/lib/plugins/notifications/notify-metro.js' %}"></script>
 
 <script type="text/javascript">
     jQuery(document).ready(function($) {

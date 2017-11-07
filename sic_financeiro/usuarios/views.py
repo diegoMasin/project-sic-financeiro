@@ -22,9 +22,11 @@ def signup(request):
 def do_login(request):
     form = UserModelForm(request.POST or None)
     if request.method == 'POST':
-        user = authenticate(username=request.POST['username'], passoword=['password'])
+        user = authenticate(request, username=request.POST['username'], password=request.POST['password'])
         if user is not None:
             login(request, user)
+            messages.success(request, 'Bem Vindo ao Sic Financeiro!')
+
             return redirect(context_global.url_home)
 
         else:
@@ -37,6 +39,7 @@ def do_login(request):
 @login_required
 def do_logout(request):
     logout(request)
+    messages.success(request, 'Saiu com Sucesso!')
 
     return redirect(context_global.url_login)
 
