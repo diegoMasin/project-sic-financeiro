@@ -52,6 +52,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'whitenoise.middleware.WhiteNoiseMiddleware',
 ]
 
 ROOT_URLCONF = 'sic_financeiro.urls'
@@ -140,3 +141,5 @@ FILE_UPLOAD_HANDLERS = (
 )
 
 LOGIN_URL = '/login'
+
+ADMINS = (('Diego Masin', 'diegoifce@gmail.com'),)
