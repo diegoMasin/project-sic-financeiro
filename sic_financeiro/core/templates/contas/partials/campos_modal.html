@@ -1,20 +1,77 @@
-<form role="form" action="" method="get">
+<div class="form-group">
     <div class="form-group">
-        <div class="form-group">
-            <label>{{ form_contas.nome.label }}</label>
-            {{ form_contas.nome }}
+        <label>{{ form_contas.nome.label }}</label>
+        {{ form_contas.nome }}
+    </div>
+</div>
+<div class="form-group">
+    <div class="form-group">
+        <label>{{ form_contas.tipo.label }}</label>
+        {{ form_contas.tipo }}
+    </div>
+</div>
+<div class="form-group">
+    <div class="form-group">
+        <label>{{ form_contas.saldo.label }}</label>
+        {{ form_contas.saldo }}
+    </div>
+</div>
+<div class="form-group m-0">
+    <div class="form-group m-0">
+        <label>Cor da Conta</label>
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-6">
+        <div class="radio">
+            <input type="radio" name="cor_layout" id="cor-cinza" value="CINZA" checked>
+            <label for="cor-cinza">
+                Cinza
+            </label>
+        </div>
+        <div class="radio radio-primary">
+            <input type="radio" name="cor_layout" id="radio3" value="AZUL">
+            <label for="radio3">
+                Azul
+            </label>
+        </div>
+        <div class="radio radio-success">
+            <input type="radio" name="cor_layout" id="radio4" value="VERDE">
+            <label for="radio4">
+                Verde
+            </label>
+        </div>
+        <div class="radio radio-info">
+            <input type="radio" name="cor_layout" id="radio5" value="AZUL_CLARO">
+            <label for="radio5">
+                Azul Claro
+            </label>
         </div>
     </div>
-    <div class="form-group">
-        <div class="form-group">
-            <label>{{ form_contas.tipo.label }}</label>
-            {{ form_contas.tipo }}
+    <div class="col-lg-6">
+        <div class="radio radio-danger">
+            <input type="radio" name="cor_layout" id="radio6" value="VERMELHO">
+            <label for="radio6">
+                Vermelho
+            </label>
+        </div>
+        <div class="radio radio-warning">
+            <input type="radio" name="cor_layout" id="radio7" value="LARANJA">
+            <label for="radio7">
+                Laranja
+            </label>
+        </div>
+        <div class="radio radio-purple">
+            <input type="radio" name="cor_layout" id="radio8" value="ROXO">
+            <label for="radio8">
+                Roxo
+            </label>
+        </div>
+        <div class="radio radio-pink">
+            <input type="radio" name="cor_layout" id="radio9" value="ROSA">
+            <label for="radio9">
+                Rosa
+            </label>
         </div>
     </div>
-    <div class="form-group">
-        <div class="form-group">
-            <label>{{ form_contas.saldo.label }}</label>
-            {{ form_contas.saldo }}
-        </div>
-    </div>
-</form>
+</div>

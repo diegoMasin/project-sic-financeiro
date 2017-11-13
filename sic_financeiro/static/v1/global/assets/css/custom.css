@@ -3,3 +3,7 @@
 .texto-preto {
     color: #000;
 }
+
+.cursor-pointer {
+    cursor: pointer;
+}

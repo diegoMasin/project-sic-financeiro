@@ -6,6 +6,7 @@ url_signup = 'usuario_signup'
 url_termo = 'usuario_termo'
 url_home = 'pagina_inicial'
 url_contas_listar = 'contas_listar'
+url_contas_salvar = 'contas_salvar'
 
 path_login = 'login'
 path_home = 'pagina_inicial'
@@ -18,6 +19,7 @@ context = {
     'url_termo': url_termo,
     'url_home': url_home,
     'url_contas_listar': url_contas_listar,
+    'url_contas_salvar': url_contas_salvar,
 
     'path_login': path_login,
     'path_home': path_home,

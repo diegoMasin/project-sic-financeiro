@@ -23,16 +23,18 @@ class Conta(models.Model):
     LARANJA = 'warning'
     VERMELHO = 'danger'
     ROSA = 'pink'
-    PRETO = 'dark'
+    CINZA = 'default'
     ROXO = 'purple'
+    AZUL_CLARO = 'info'
     COR_CONTA = (
         (AZUL, 'Azul'),
         (VERDE, 'Verde'),
         (LARANJA, 'Laranja'),
         (VERMELHO, 'Vermelho'),
         (ROSA, 'Rosa'),
-        (PRETO, 'Preto'),
-        (ROXO, 'Roxo')
+        (CINZA, 'Cinza'),
+        (ROXO, 'Roxo'),
+        (AZUL_CLARO, 'info')
     )
 
     id = models.AutoField(primary_key=True, db_column='pk_conta')

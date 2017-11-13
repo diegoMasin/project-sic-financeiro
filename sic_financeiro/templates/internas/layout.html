@@ -10,6 +10,7 @@
 
     <link rel="shortcut icon" href="{% static 'v1/global/assets/images/favicon.ico' %}">
     <link href="{% static 'v1/global/assets/js/lib/plugins/switchery/switchery.min.css' %}" rel="stylesheet" />
+    <link rel="stylesheet" href="{% static 'v1/global/assets/js/lib/plugins/morris/morris.css' %}">
     <link href="{% static 'v1/global/assets/js/lib/plugins/jquery-circliful/css/jquery.circliful.css' %}" rel="stylesheet" />
     <link href="{% static 'v1/global/assets/css/bootstrap.min.css' %}" rel="stylesheet" type="text/css">
     <link href="{% static 'v1/global/assets/css/icons.css' %}" rel="stylesheet" type="text/css">
@@ -23,6 +24,11 @@
     {% block css_specific %}{% endblock css_specific %}
 
     <script src="{% static 'v1/global/assets/js/modernizr.min.js' %}"></script>
+
+    <!-- Variáveis Javascript Globais -->
+    <script>
+        URL_CONTAS_SALVAR = '{{ url_contas_salvar_js }}';
+    </script>
 </head>
 
 <body class="fixed-left">
@@ -104,6 +110,9 @@
 <script src="{% static 'v1/global/assets/js/lib/plugins/mask-custom/jquery.maskMoney.js' %}"></script>
 <script src="{% static 'v1/global/assets/js/jquery.custom.global.js' %}"></script>
 <script src="{% static 'v1/global/assets/js/crudp.js' %}"></script>
+
+<!-- Específico Global -->
+<script src="{% static 'v1/especifico/contas/main.js' %}"></script>
 
 <script type="text/javascript">
     jQuery(document).ready(function($) {
