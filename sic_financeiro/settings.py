@@ -86,7 +86,10 @@ DATABASES = {
     )
 }
 # Tirar o comentario quando estiver desenvolvendo localmente
-DATABASES['default']['OPTIONS'] = {'options': '-c search_path=sic'}
+# Decidido não utilizar mais schema no banco local até desenvolver um
+#   card só para criar um padrão de uso em prod e uso em dev
+DATABASE_SCHEMA = '-c search_path=sic'
+DATABASES['default']['OPTIONS'] = {'options': config('DATABASE_SCHEMA', default=DATABASE_SCHEMA)}
 
 # Password validation
 # https://docs.djangoproject.com/en/1.11/ref/settings/#auth-password-validators
