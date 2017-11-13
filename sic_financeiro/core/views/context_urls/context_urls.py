@@ -1,5 +1,4 @@
-titulo_pagina_home = 'Painel de Controle'
-titulo_pagina_contas = 'Contas'
+from sic_financeiro.core.forms.contas import ContasForm
 
 url_login = 'usuario_login'
 url_logout = 'usuario_logout'
@@ -13,9 +12,6 @@ path_home = 'pagina_inicial'
 path_contas = 'contas'
 
 context = {
-    'titulo_pagina_home': titulo_pagina_home,
-    'titulo_pagina_contas': titulo_pagina_contas,
-
     'url_login': url_login,
     'url_logout': url_logout,
     'url_signup': url_signup,
@@ -26,4 +22,6 @@ context = {
     'path_login': path_login,
     'path_home': path_home,
     'path_contas': path_contas,
+
+    'form_contas': ContasForm(),
 }
