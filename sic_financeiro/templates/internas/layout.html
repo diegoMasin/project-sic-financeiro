@@ -16,6 +16,9 @@
     <link href="{% static 'v1/global/assets/css/style.css' %}" rel="stylesheet" type="text/css">
     <link href="{% static 'v1/global/assets/js/lib/plugins/custombox/dist/custombox.min.css' %}" rel="stylesheet">
 
+    <!-- css global customizado -->
+    <link rel="stylesheet" href="{% static 'v1/global/assets/css/custom.css' %}">
+
     {% block css %}{% endblock css %}
     {% block css_specific %}{% endblock css_specific %}
 
@@ -53,7 +56,7 @@
 </div>
 
 <!-- MODALS -->
-{% include 'internas/partials/modals/criar_conta.html' %}
+{% include 'internas/partials/modals/criar_conta_modal.html' %}
 
 <script>
     var resizefunc = [];

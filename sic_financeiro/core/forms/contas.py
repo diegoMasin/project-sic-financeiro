@@ -14,8 +14,12 @@ class ContasForm(forms.ModelForm):
             'saldo': 'Saldo Atual'
         }
         widgets = {
-            'nome': forms.TextInput(attrs={'class': 'form-control', 'required': True}),
+            'nome': forms.TextInput(attrs={'class': 'form-control', 'required': True, 'placeholder': 'Nome da Conta'}),
             'cor_layout': forms.RadioSelect(attrs={'class: '}),
-            'tipo': forms.Select(attrs={'required': True}),
-            'saldo': forms.TextInput(attrs={'class': 'form-control moeda-real', 'required': True})
+            'tipo': forms.Select(attrs={'class': 'form-control', 'required': True}),
+            'saldo': forms.TextInput(attrs={
+                'class': 'form-control moeda-real',
+                'required': True,
+                'placeholder': 'R$ 0,00'
+            })
         }
