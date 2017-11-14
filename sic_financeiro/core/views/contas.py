@@ -1,10 +1,11 @@
+from datetime import datetime
 from django.contrib.auth.decorators import login_required
 from django.http import HttpResponseRedirect
 from django.shortcuts import render
+from sic_financeiro.core.models.contas import Conta
 
 from sic_financeiro.core.forms.contas import ContasForm
 from sic_financeiro.core.views.context_urls import context_urls as carregador_global
-from sic_financeiro.core.views.context_urls import utils
 
 
 @login_required
@@ -21,10 +22,13 @@ def listar(request):
 @login_required
 def salvar(request):
     form = ContasForm(request.POST)
-    form.fields['saldo'] = utils.remove_moeda(form.data['saldo'])
 
     if request.method == 'POST' and form.is_valid():
-        form.save()
+        dados = form.cleaned_data
+        dados['data_inicio'] = datetime.now()
+
+        Conta.save(**dados)
+        # pass
 
     return HttpResponseRedirect(request.META.get('HTTP_REFERER'))
     # json_dict = {
