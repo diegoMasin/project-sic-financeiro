@@ -1,6 +1,7 @@
 from django import forms
+
+from sic_financeiro.core.globais import utils
 from sic_financeiro.core.models import Conta
-from sic_financeiro.core.views.context_urls import utils
 
 
 class ContasForm(forms.ModelForm):
