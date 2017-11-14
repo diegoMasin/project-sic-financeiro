@@ -13,11 +13,8 @@ from sic_financeiro.core.models.contas import Conta
 
 @login_required
 def listar(request):
-    valor_atual = 3000
-    valor_final_mes = 254.50
-
-    carregador_global.context['valor_atual'] = valor_atual
-    carregador_global.context['valor_final_mes'] = valor_final_mes
+    contas = Conta.objects.all().order_by('nome')
+    carregador_global.context['lista_contas'] = contas
 
     return render(request, '{0}/listar.html'.format(carregador_global.path_contas), carregador_global.context)
 

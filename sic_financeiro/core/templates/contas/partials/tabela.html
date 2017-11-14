@@ -7,20 +7,22 @@
         <th>Nome</th>
         <th>Saldo Atual</th>
         <th>Saldo Final do Mês</th>
-        <th>Ações</th>
+        <th width="120">Ações</th>
     </tr>
     </thead>
     <tbody>
-    <tr>
-        <th scope="row" class="text-center">
-            <i class="fa fa-dollar"></i>
-        </th>
-        <td>Conta Santader</td>
-        <td>{{ valor_atual|to_mask_money }}</td>
-        <td>{{ valor_final_mes|to_mask_money }}</td>
-        <td>
-            <a href="#"><i class="fa fa-pencil"></i></a>
-        </td>
-    </tr>
+    {% for conta in lista_contas %}
+        <tr>
+            <td scope="row" class="text-center">
+                <i class="fa fa-dollar text-{{ conta.cor_layout }}"></i>
+            </td>
+            <td>{{ conta.nome }}</td>
+            <td>{{ conta.saldo|to_mask_money }}</td>
+            <td>{{ conta.saldo|to_mask_money }}</td>
+            <td>
+                <a href="#"><i class="fa fa-pencil"></i></a>
+            </td>
+        </tr>
+    {% endfor %}
     </tbody>
 </table>
