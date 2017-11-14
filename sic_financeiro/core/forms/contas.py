@@ -1,8 +1,16 @@
 from django import forms
 from sic_financeiro.core.models import Conta
+from sic_financeiro.core.views.context_urls import utils
 
 
 class ContasForm(forms.ModelForm):
+    saldo = forms.CharField(
+        label='Saldo Atual',
+        widget=forms.TextInput(attrs={
+            'class': 'form-control moeda-real',
+            'required': True,
+            'placeholder': 'R$ 0,00'
+        }))
 
     class Meta:
         model = Conta
@@ -10,14 +18,11 @@ class ContasForm(forms.ModelForm):
         labels = {
             'nome': 'Nome',
             'tipo': 'Tipo de Conta',
-            'saldo': 'Saldo Atual'
         }
         widgets = {
             'nome': forms.TextInput(attrs={'class': 'form-control', 'required': True, 'placeholder': 'Nome da Conta'}),
             'tipo': forms.Select(attrs={'class': 'form-control', 'required': True}),
-            'saldo': forms.TextInput(attrs={
-                'class': 'form-control moeda-real',
-                'required': True,
-                'placeholder': 'R$ 0,00'
-            })
         }
+
+    def clean_saldo(self):
+        return utils.remove_moeda(self.cleaned_data['saldo'])

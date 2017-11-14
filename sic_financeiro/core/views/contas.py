@@ -1,10 +1,10 @@
-import json
-
 from django.contrib.auth.decorators import login_required
-from django.http import HttpResponse
+from django.http import HttpResponseRedirect
 from django.shortcuts import render
 
+from sic_financeiro.core.forms.contas import ContasForm
 from sic_financeiro.core.views.context_urls import context_urls as carregador_global
+from sic_financeiro.core.views.context_urls import utils
 
 
 @login_required
@@ -20,14 +20,17 @@ def listar(request):
 
 @login_required
 def salvar(request):
-    form = carregador_global.ContasForm(request.GET)
-    # if form.is_valid():
+    form = ContasForm(request.POST)
+    form.fields['saldo'] = utils.remove_moeda(form.data['saldo'])
+
+    if request.method == 'POST' and form.is_valid():
+        form.save()
+
+    return HttpResponseRedirect(request.META.get('HTTP_REFERER'))
+    # json_dict = {
+    #     'mensagem': "Sucesso"
+    # }
+    # result = json.dumps(json_dict)
+    # response = HttpResponse(result, content_type='application/json')
     #
-
-    json_dict = {
-        'mensagem': "Sucesso"
-    }
-    result = json.dumps(json_dict)
-    response = HttpResponse(result, content_type='application/json')
-
-    return response
+    # return response

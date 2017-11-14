@@ -6,7 +6,8 @@
                 <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
                 <h4 class="modal-title">Criar Conta</h4>
             </div>
-            <form id="form-criar-conta" role="form" action="">
+            <form id="form-criar-conta" role="form" method="post" action="{% url url_contas_salvar %}">
+                {% csrf_token %}
                 <div class="modal-body bg-dark text-white">
                     {% include 'contas/partials/campos_modal.html' %}
                 </div>
