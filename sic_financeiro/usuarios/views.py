@@ -16,7 +16,7 @@ def signup(request):
 
             return redirect('/login')
 
-    context_global.context['form'] = form
+    carregador_global.context['form'] = form
     return render(request, '{0}/signup.html'.format(carregador_global.path_login), carregador_global.context)
 
 

@@ -10,29 +10,7 @@
     $('#menu-criar-conta').click(function () {
         resetando_campos_form();
     });
-//
-//     // AJAX SALVAR CONTA
-//     $('#salvar-conta').click(function() {
-//         saldo = saldo.val().replace('R$', '').replace(' ', '').replace('.', '').replace(',', '.');
-//         saldo = parseFloat(saldo);
-//         var data = {
-//             'nome': nome.val(),
-//             'tipo': tipo.val(),
-//             'saldo': saldo,
-//             'cor_layout': cor_layout.val()
-//         };
-//
-//         $.ajax({
-//             type: 'GET',
-//             url: URL_CONTAS_SALVAR,
-//             data: data,
-//             dataType: 'json',
-//             success: function(json) {
-//                 Console.log(json.mensagem);
-//             }
-//         });
-//     });
-//
+
     // FUNÇÕES GERAIS
     function resetando_campos_form() {
         nome.val('');
