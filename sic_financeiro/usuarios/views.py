@@ -8,12 +8,18 @@ from sic_financeiro.core.views.context_urls import context_urls as context_globa
 
 def signup(request):
     form = UserModelForm(request.POST or None)
+
     if request.method == 'POST':
         if form.is_valid():
-            form.save()
-            messages.success(request, 'Usuário cadastrado com sucesso!')
+            try:
+                check_termo = request.POST['check_termo']
+                # form.save()
+                messages.success(request, 'Usuário cadastrado com sucesso!')
 
-            return redirect('/login')
+                return redirect('/login')
+
+            except:
+                messages.warning(request, 'Marque se concorda com os Termos')
 
     context_global.context['form'] = form
     return render(request, '{0}/signup.html'.format(context_global.path_login), context_global.context)

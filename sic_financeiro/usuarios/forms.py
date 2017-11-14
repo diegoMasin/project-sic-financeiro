@@ -48,5 +48,4 @@ class UserModelForm(forms.ModelForm):
                 'required': True,
                 'maxlength': 50
             }),
-
         }
