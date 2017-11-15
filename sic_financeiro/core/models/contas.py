@@ -58,5 +58,23 @@ class Conta(models.Model):
         to_string = self.nome
         return to_string
 
+    def get_nome_tipo_conta(self):
+        return self.TIPO_CONTA[self.tipo][1]
+
+    def get_simbolo_tipo_conta(self):
+        simbolo = 'eur'
+        simbolo = 'bank' if self.tipo == self.CONTA_CORRENTE else simbolo
+        simbolo = 'dollar' if self.tipo == self.POUPANCA else simbolo
+        simbolo = 'money' if self.tipo == self.DINHEIRO else simbolo
+        simbolo = 'bar-chart-o' if self.tipo == self.INVESTIMENTO else simbolo
+
+        return simbolo
+
+    def get_status_nome(self):
+        if self.status_ativa:
+            return 'Ativa'
+
+        return 'Arquivada'
+
     # def get_saldo_final_mês(self):
     #     pass
