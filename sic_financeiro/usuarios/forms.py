@@ -38,7 +38,7 @@ class UserModelForm(forms.ModelForm):
             }),
             'username': forms.TextInput(attrs={
                 'class': 'form-control',
-                'placeholder': 'Username',
+                'placeholder': 'Usuário',
                 'required': True,
                 'maxlength': 50
             }),
