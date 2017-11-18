@@ -1,6 +1,6 @@
-from django.shortcuts import render
-from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
+from django.shortcuts import render
+
 from sic_financeiro.core.views.context_urls import context_urls as carregador_global
 
 
