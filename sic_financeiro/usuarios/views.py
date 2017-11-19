@@ -13,13 +13,22 @@ def signup(request):
     if request.method == 'POST':
         if form.is_valid():
             try:
+                email_form = form.cleaned_data.get('email')
+                existe_email = User.objects.filter(email=email_form).count()
+                if existe_email > 0:
+                    raise Exception('Esse email já foi cadastrado. Utilize outro.')
+
                 request.POST['check_termo']
                 form.save()
                 messages.success(request, 'Usuário cadastrado com sucesso!')
 
                 return redirect('/login')
+
+            except Exception as e:
+                messages.warning(request, e)
             except:
                 messages.warning(request, 'Marque se concorda com os Termos')
+
         else:
             if form.errors['username']:
                 messages.warning(request, form.errors['username'][0])
