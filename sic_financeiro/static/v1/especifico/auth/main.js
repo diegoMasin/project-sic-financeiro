@@ -1,8 +1,8 @@
 /** SIGNUP **/
 function showMessageNotify(text) {
-    //$('.gerado-mensagem').attr('onclick', '2');
-    $('.gerado-mensagem').attr('onclick', '$.Notification.autoHideNotify(\'warning\', \'top right\', \'Mensagem:\',\''+text+'\')');
-    $('.gerado-mensagem').click();
+    var mensagem = $('.gerado-mensagem');
+    mensagem.attr('onclick', '$.Notification.autoHideNotify(\'warning\', \'top right\', \'Mensagem:\',\''+text+'\')');
+    mensagem.click();
 }
 
 function validPasswordsEqual(inputs) {
