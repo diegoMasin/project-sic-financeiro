@@ -1,6 +1,6 @@
 {% load core_tags%}
 {% load humanize %}
-<table id="" class="table table-striped" data-page-size="10" data-sorting="true">
+<table id="" class="table table-striped">
     <thead>
     <tr>
         <th>&nbsp;</th>
@@ -11,15 +11,6 @@
         <th width="120">Ações</th>
     </tr>
     </thead>
-    <div class="form-inline m-b-20">
-        <div class="row">
-            <div class="col-md-12">
-                <div class="form-group">
-                    <input id="demo-foo-search" type="text" placeholder="Pesquise..." class="form-control" autocomplete="on">
-                </div>
-            </div>
-        </div>
-    </div>
     <tbody>
     {% for conta in lista_contas %}
         <tr>
@@ -44,7 +35,7 @@
                 <a href="#" class="m-r-15" data-toggle="tooltip" data-placement="top" data-original-title="Editar">
                     <i class="fa fa-pencil text-white"></i>
                 </a>
-                <a href="#" data-toggle="tooltip" data-placement="top" data-original-title="Arquivar">
+                <a class="acao-arquivar" href="#" data-toggle="tooltip" data-placement="top" data-original-title="Arquivar">
                     <i class="fa fa-archive text-white"></i>
                 </a>
             </td>

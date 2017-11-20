@@ -17,6 +17,9 @@
     <link href="{% static 'v1/global/assets/css/style.css' %}" rel="stylesheet" type="text/css">
     <link href="{% static 'v1/global/assets/js/lib/plugins/custombox/dist/custombox.min.css' %}" rel="stylesheet">
 
+    <!-- Sweet Alert css -->
+    <link href="{% static 'v1/global/assets/js/lib/plugins/bootstrap-sweetalert/sweet-alert.css' %}" rel="stylesheet" type="text/css" />
+
     <!-- css global customizado -->
     <link rel="stylesheet" href="{% static 'v1/global/assets/css/custom.css' %}">
 
@@ -78,6 +81,9 @@
 <script src="{% static 'v1/global/assets/js/jquery.scrollTo.min.js' %}"></script>
 <script src="{% static 'v1/global/assets/js/lib/plugins/switchery/switchery.min.js' %}"></script>
 
+<!-- Sweet Alert js -->
+<script src="{% static 'v1/global/assets/js/lib/plugins/bootstrap-sweetalert/sweet-alert.min.js' %}"></script>
+
 <!-- Counter Up  -->
 <script src="{% static 'v1/global/assets/js/lib/plugins/waypoints/lib/jquery.waypoints.min.js' %}"></script>
 <script src="{% static 'v1/global/assets/js/lib/plugins/counterup/jquery.counterup.min.js' %}"></script>
@@ -106,37 +112,10 @@
 <script src="{% static 'v1/global/assets/js/lib/plugins/mask-custom/jquery.maskMoney.js' %}"></script>
 <script src="{% static 'v1/global/assets/js/jquery.custom.global.js' %}"></script>
 <script src="{% static 'v1/global/assets/js/crudp.js' %}"></script>
+<script src="{% static 'v1/global/assets/js/btnAcoes.js' %}"></script>
 
 <!-- Específico Global -->
 <script src="{% static 'v1/especifico/contas/main.js' %}"></script>
-
-<script type="text/javascript">
-    jQuery(document).ready(function($) {
-        $('.counter').counterUp({
-            delay: 100,
-            time: 1200
-        });
-        $('.circliful-chart').circliful();
-    });
-
-    // BEGIN SVG WEATHER ICON
-    if (typeof Skycons !== 'undefined'){
-        var icons = new Skycons(
-                {"color": "#3bafda"},
-                {"resizeClear": true}
-                ),
-                list  = [
-                    "clear-day", "clear-night", "partly-cloudy-day",
-                    "partly-cloudy-night", "cloudy", "rain", "sleet", "snow", "wind",
-                    "fog"
-                ],
-                i;
-
-        for(i = list.length; i--; )
-            icons.set(list[i], list[i]);
-        icons.play();
-    };
-</script>
 
 {% block js %}{% endblock js %}
 {% block js_specific %}
