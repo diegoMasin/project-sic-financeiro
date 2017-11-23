@@ -112,3 +112,7 @@ class TextosPadroes(object):
     @staticmethod
     def existem_registros_conflitantes():
         return _('Existem registros conflitantes.')
+
+    @staticmethod
+    def usuario_nao_logado():
+        return _('Usuário não esta logado, por favor efetuar o login!')

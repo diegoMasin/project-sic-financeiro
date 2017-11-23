@@ -12,8 +12,16 @@
             allowNegative: true,
             thousands:'.',
             decimal:',',
-            affixesStay: false
+            affixesStay: true
         });
+    }
+
+    // RETIRA FORMATAÇÃO MOEDA
+    function remove_format_moeda(value) {
+        value = value.replace('R$', '').replace(' ', '').replace('.', '').replace(',', '.');
+        value = parseFloat(value);
+
+        return value;
     }
 })
 (jQuery);
