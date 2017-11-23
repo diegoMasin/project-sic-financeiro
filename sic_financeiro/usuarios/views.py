@@ -1,11 +1,11 @@
 from django.contrib import messages
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
+from django.contrib.auth.models import User
 from django.shortcuts import render, redirect
 
 from sic_financeiro.core.globais import carregador_global
 from sic_financeiro.usuarios.forms import UserModelForm
-from django.contrib.auth.models import User
 
 
 def signup(request):
@@ -19,7 +19,10 @@ def signup(request):
                 if existe_email > 0:
                     raise Exception('Esse email já foi cadastrado. Utilize outro.')
 
-                request.POST['check_termo']
+                is_check_termo = request.POST.get('check_termo', False)
+                if not is_check_termo:
+                    raise Exception('Marque caixa se concorda com os Termos e Condições!')
+
                 form.save()
                 messages.success(request, 'Usuário cadastrado com sucesso!')
 
@@ -27,8 +30,6 @@ def signup(request):
 
             except Exception as e:
                 messages.warning(request, e)
-            except:
-                messages.warning(request, 'Marque se concorda com os Termos')
 
         else:
             if form.errors['username']:
