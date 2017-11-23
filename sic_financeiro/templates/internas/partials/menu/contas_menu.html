@@ -1,0 +1,13 @@
+{% load staticfiles %}
+<li class="has_sub">
+    <a href="javascript:void(0);" class="waves-effect waves-primary"><i class="fa fa-bank"></i> <span> Contas </span>
+        <span class="menu-arrow"></span></a>
+    <ul class="list-unstyled">
+        <li>
+            <a id="menu-criar-conta" href="#" data-toggle="modal" data-target="#criar-conta-modal">
+                Nova Conta
+            </a>
+        </li>
+        <li><a href="{% url url_contas_listar %}">Listar Contas</a></li>
+    </ul>
+</li>

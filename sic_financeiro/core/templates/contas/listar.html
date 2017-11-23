@@ -4,7 +4,7 @@
 {% load staticfiles %}
 
 {% block titulo_pagina %}
-    {{ titulo_pagina_contas }}
+    Minhas Contas
 {% endblock titulo_pagina %}
 
 {% block content %}
@@ -15,4 +15,5 @@
             </div>
         </div>
     </div>
+    {% include 'contas/partials/total.html' %}
 {% endblock content %}

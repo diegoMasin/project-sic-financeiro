@@ -5,16 +5,16 @@
             <ul>
                 <li class="menu-title">Menu</li>
                 <li class="active">
-                    <a href="{% url url_home %}" class="waves-effect waves-primary active">
+                    <a href="{% url url_home %}" class="waves-effect waves-primary">
                         <i class="fa fa-home"></i>
-                        <span> Dashboard </span>
+                        <span> Painel de Controle </span>
                     </a>
                 </li>
-                {% include 'internas/partials/contas_menu.html' %}
-                {% include 'internas/partials/receitas_menu.html' %}
-                {% include 'internas/partials/despesas_menu.html' %}
-                {% include 'internas/partials/cartao_credito_menu.html' %}
-                {% include 'internas/partials/transferencias_menu.html' %}
+                {% include 'internas/partials/menu/contas_menu.html' %}
+                {% include 'internas/partials/menu/receitas_menu.html' %}
+                {% include 'internas/partials/menu/despesas_menu.html' %}
+                {% include 'internas/partials/menu/cartao_credito_menu.html' %}
+                {% include 'internas/partials/menu/transferencias_menu.html' %}
             </ul>
             <div class="clearfix"></div>
         </div>
