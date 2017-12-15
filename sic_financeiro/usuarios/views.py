@@ -43,12 +43,17 @@ def do_login(request):
     form = UserModelForm(request.POST or None)
     if request.method == 'POST':
         user = authenticate(request, username=request.POST['username'], password=request.POST['password'])
+
+        if user is None:
+            userqueryset = User.objects.all().filter(email=request.POST['username'])
+            if userqueryset:
+                username = userqueryset[0].username
+                user = authenticate(request, username=username, password=request.POST['password'])
+
         if user is not None:
             login(request, user)
             messages.success(request, 'Bem Vindo ao Sic Financeiro!')
-
             return redirect(carregador_global.url_home)
-
         else:
             messages.warning(request, 'Usuário ou senha não existente!')
 
