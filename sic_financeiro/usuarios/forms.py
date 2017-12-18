@@ -13,7 +13,6 @@ class UserModelForm(forms.ModelForm):
 
         return user
 
-
     class Meta:
         model = User
         fields = ['username', 'first_name', 'last_name', 'email', 'password']
@@ -38,7 +37,7 @@ class UserModelForm(forms.ModelForm):
             }),
             'username': forms.TextInput(attrs={
                 'class': 'form-control',
-                'placeholder': 'Usuário ou Email',
+                'placeholder': 'Usuário',
                 'required': True,
                 'maxlength': 50
             }),
