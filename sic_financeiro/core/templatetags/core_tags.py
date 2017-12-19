@@ -8,7 +8,7 @@ register = template.Library()
 
 @register.filter()
 def to_mask_money(value):
-    return Money().format(value)
+    return Money().format(value) if value else ''
 
 
 @register.filter()

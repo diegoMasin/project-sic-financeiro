@@ -17,7 +17,7 @@ com relação às decisões mais básicas do seu dia a dia.
 
 # Instalaçao e Configuração do início do projeto
 
-1. Dentro da pasta meus_projetos, execute virtualenv .virtualenv -p pythopn3
+1. Dentro da pasta meus_projetos, execute virtualenv .virtualenv -p python3
 2. Execute a virtualenv com: source .virtualenv/bin/activate
 3. Na máquina virtual instale o Django com: pip install -U django
 4. Na pasta meus_projetos, execute o git clone do projeto e deixando a pasta sic_financeiro como irmã da pasta da virtualenv
