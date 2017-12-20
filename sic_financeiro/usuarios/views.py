@@ -30,7 +30,6 @@ def signup(request):
 
             except Exception as e:
                 messages.warning(request, e)
-
         else:
             if form.errors['username']:
                 messages.warning(request, form.errors['username'][0])
@@ -41,8 +40,18 @@ def signup(request):
 
 def do_login(request):
     form = UserModelForm(request.POST or None)
+    user_remember_cookie = 'userremember'
+
     if request.method == 'POST':
         user = authenticate(request, username=request.POST['username'], password=request.POST['password'])
+        is_check_remember = request.POST.get('check_remember', False)
+
+        if is_check_remember:
+            if request.session.get(user_remember_cookie, False) is False or request.session[user_remember_cookie] != request.POST['username']:
+                request.session[user_remember_cookie] = request.POST['username']
+        else:
+            if request.session.get(user_remember_cookie, False) is not False:
+                del request.session[user_remember_cookie]
 
         if user is None:
             userqueryset = User.objects.all().filter(email=request.POST['username'])
@@ -57,15 +66,21 @@ def do_login(request):
         else:
             messages.warning(request, 'Usuário ou senha não existente!')
 
+    form.fields['username'].initial = request.session.get(user_remember_cookie, '')
     carregador_global.context['form'] = form
+    carregador_global.context[user_remember_cookie] = request.session.get(user_remember_cookie, False)
     return render(request, '{0}/login.html'.format(carregador_global.path_login), carregador_global.context)
 
 
 @login_required
 def do_logout(request):
+    userremember = request.session.get('userremember', False)
     logout(request)
-    messages.success(request, 'Saiu com Sucesso!')
 
+    if userremember is not False:
+        request.session['userremember'] = userremember
+
+    messages.success(request, 'Saiu com Sucesso!')
     return redirect(carregador_global.url_login)
 
 
