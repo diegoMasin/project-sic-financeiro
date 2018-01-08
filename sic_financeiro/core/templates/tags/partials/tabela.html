@@ -1,0 +1,25 @@
+{% load core_tags%}
+
+<table class="table table-striped">
+    <thead>
+    <tr>
+        <th>Nome</th>
+        <th width="120">Ações</th>
+    </tr>
+    </thead>
+    <tbody>
+        {% for tag in lista_tags %}
+            <tr>
+                <td>{{ tag.nome }}</td>
+                <td>
+                    <a href="#" class="m-r-15" data-toggle="tooltip" data-placement="top" data-original-title="Editar">
+                        <i class="fa fa-pencil text-white"></i>
+                    </a>
+                    <a class="acao-excluir" href="#" data-toggle="tooltip" data-placement="top" data-original-title="Excluir">
+                        <i class="fa fa-archive text-white"></i>
+                    </a>
+                </td>
+            </tr>
+        {% endfor %}
+    </tbody>
+</table>
