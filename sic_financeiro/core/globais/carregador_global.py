@@ -10,6 +10,9 @@ url_contas_listar = 'contas_listar'
 url_contas_salvar = 'contas_salvar'
 url_tags_listar = 'tags_listar'
 url_tags_salvar = 'tags_salvar'
+url_tags_apagar = 'tags_apagar'
+url_tags_editar = 'tags_editar'
+url_tags_atualizar = 'tags_atualizar'
 
 path_login = 'login'
 path_home = 'pagina_inicial'
@@ -26,6 +29,9 @@ context = {
     'url_contas_salvar': url_contas_salvar,
     'url_tags_listar': url_tags_listar,
     'url_tags_salvar': url_tags_salvar,
+    'url_tags_apagar': url_tags_apagar,
+    'url_tags_editar': url_tags_editar,
+    'url_tags_atualizar': url_tags_atualizar,
 
     'path_login': path_login,
     'path_home': path_home,

@@ -11,5 +11,5 @@ class TagsForm(forms.ModelForm):
             'nome': 'Nome'
         }
         widgets = {
-            'nome': forms.TextInput(attrs={'class': 'form-control', 'required': True, 'placeholder': 'Nome Tag'})
+            'nome': forms.TextInput(attrs={'class': 'form-control', 'required': True, 'placeholder': 'tag'})
         }

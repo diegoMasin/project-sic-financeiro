@@ -1,8 +1,5 @@
-from datetime import datetime
-
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
-from django.db.models import Sum
 from django.http import HttpResponseRedirect
 from django.shortcuts import render
 
@@ -18,3 +15,31 @@ def listar(request):
     carregador_global.context['lista_tags'] = tags
 
     return render(request, '{0}/listar.html'.format(carregador_global.path_tags), carregador_global.context)
+
+
+@login_required
+def salvar(request):
+    if request.method == 'POST':
+        form = TagsForm(request.POST)
+        if form.is_valid():
+            dados = form.cleaned_data
+
+            data = set_usuario_owner(request, dados)
+            salvar_tag = Tag(**data)
+            salvar_tag.save()
+
+            messages.success(request, 'Nova tag criada com Sucesso!')
+
+        else:
+            messages.warning(request, 'O formulário não esta válido {0}'.format(form.errors))
+
+    return HttpResponseRedirect(request.META.get('HTTP_REFERER'))
+
+
+@login_required
+def apagar(request, id_tag):
+    tag = Tag.objects.filter(pk=id_tag)
+    tag.delete()
+
+    messages.success(request, 'Tag removida com sucesso.')
+    return HttpResponseRedirect(request.META.get('HTTP_REFERER'))

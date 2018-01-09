@@ -27,6 +27,27 @@
             });
         });
 
+        //Botão de Ação Arquivar
+        $('.acao-excluir').click(function () {
+            swal({
+                title: "Você deseja Excluir?",
+                text: "Após excluída, esta tag deixará de existir.",
+                type: "warning",
+                showCancelButton: true,
+                confirmButtonColor: "#DD6B55",
+                confirmButtonText: "Sim, Excluir!",
+                cancelButtonText: "Não, Cancele!",
+                closeOnConfirm: false,
+                closeOnCancel: false
+            }, function (isConfirm) {
+                if (isConfirm) {
+                    swal("Excluída!", "Você Excluiu a tag.", "success");
+                } else {
+                    swal("Cancelada", "Você não excluiu a tag.", "error");
+                }
+            });
+        });
+
     },
         //init
         $.SweetAlert = new SweetAlert, $.SweetAlert.Constructor = SweetAlert
