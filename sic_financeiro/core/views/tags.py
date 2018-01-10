@@ -43,3 +43,13 @@ def apagar(request, id_tag):
 
     messages.success(request, 'Tag removida com sucesso.')
     return HttpResponseRedirect(request.META.get('HTTP_REFERER'))
+
+
+@login_required
+def editar(request, id_tag):
+    pass
+
+
+@login_required
+def atualizar(request, id_tag):
+    pass

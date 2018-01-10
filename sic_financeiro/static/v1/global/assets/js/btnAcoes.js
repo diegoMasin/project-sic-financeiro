@@ -28,10 +28,14 @@
         });
 
         //Botão de Ação Arquivar
-        $('.acao-excluir').click(function () {
+        $('.acao-excluir').click(function(event) {
+            event.preventDefault();
+            var url = $(this).data('url');
+            var titulo_model = $(this).data('model-title');
+
             swal({
                 title: "Você deseja Excluir?",
-                text: "Após excluída, esta tag deixará de existir.",
+                text: "Após excluída, esta " + titulo_model + " deixará de existir.",
                 type: "warning",
                 showCancelButton: true,
                 confirmButtonColor: "#DD6B55",
@@ -41,9 +45,15 @@
                 closeOnCancel: false
             }, function (isConfirm) {
                 if (isConfirm) {
-                    swal("Excluída!", "Você Excluiu a tag.", "success");
+                    swal({
+                        title: 'Excluída!',
+                        text: 'Você Excluiu a ' + titulo_model + '.',
+                        type: 'success'
+                    }, function(){
+                        window.location = url;
+                    });
                 } else {
-                    swal("Cancelada", "Você não excluiu a tag.", "error");
+                    swal("Cancelada", "Você não excluiu a " + titulo_model + ".", "error");
                 }
             });
         });
