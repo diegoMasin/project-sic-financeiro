@@ -1,5 +1,9 @@
+from django.core.urlresolvers import reverse
+import json
+
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
+from django.http import HttpResponse
 from django.http import HttpResponseRedirect
 from django.shortcuts import render
 
@@ -13,6 +17,7 @@ from sic_financeiro.core.models.tags import Tag
 def listar(request):
     tags = Tag.objects.all().order_by('nome')
     carregador_global.context['lista_tags'] = tags
+    carregador_global.context['url_editar'] = reverse('tags_editar')
 
     return render(request, '{0}/listar.html'.format(carregador_global.path_tags), carregador_global.context)
 
@@ -46,10 +51,34 @@ def apagar(request, id_tag):
 
 
 @login_required
-def editar(request, id_tag):
-    pass
+def editar(request):
+    tag = Tag.objects.get(pk=int(request.GET['id']))
+    json_dict = {
+        'id_tag': tag.pk,
+        'nome': tag.nome
+    }
+
+    result = json.dumps(json_dict)
+    response = HttpResponse(result, content_type='application/json')
+    return response
 
 
 @login_required
-def atualizar(request, id_tag):
-    pass
+def atualizar(request):
+    if request.method == 'POST':
+        tag = Tag.objects.get(id=request.POST['id'])
+        form = TagsForm(request.POST)
+        if form.is_valid():
+            dados = form.cleaned_data
+            dados['id'] = int(request.POST['id'])
+
+            data = set_usuario_owner(request, dados)
+            salvar_tag = Tag(**data)
+            salvar_tag.save()
+
+            messages.success(request, 'Tag atualizada com Sucesso!')
+
+        else:
+            messages.warning(request, 'O formulário não esta válido {0}'.format(form.errors))
+
+    return HttpResponseRedirect(request.META.get('HTTP_REFERER'))

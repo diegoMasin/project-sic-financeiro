@@ -13,6 +13,6 @@ urlpatterns = [
     url(r'^tags/$', tags.listar, name='tags_listar'),
     url(r'^tags/salvar/$', tags.salvar, name='tags_salvar'),
     url(r'^tags/apagar/(?P<id_tag>(\d+))/$', tags.apagar, name='tags_apagar'),
-    url(r'^tags/editar/(?P<id_tag>(\d+))/$', tags.editar, name='tags_editar'),
-    url(r'^tags/atualizar/(?P<id_tag>(\d+))/$', tags.atualizar, name='tags_atualizar'),
+    url(r'^tags/editar/$', tags.editar, name='tags_editar'),
+    url(r'^tags/atualizar/$', tags.atualizar, name='tags_atualizar'),
 ]
