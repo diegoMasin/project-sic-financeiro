@@ -36,7 +36,7 @@ def salvar(request):
             messages.success(request, 'Nova tag criada com Sucesso!')
 
         else:
-            messages.warning(request, 'O formulário não esta válido {0}'.format(form.errors))
+            messages.warning(request, form.errors.values())
 
     return HttpResponseRedirect(request.META.get('HTTP_REFERER'))
 
@@ -79,7 +79,7 @@ def atualizar(request):
             messages.success(request, 'Tag atualizada com Sucesso!')
 
         else:
-            messages.warning(request, form.errors)
+            messages.warning(request, form.errors.values())
 
     return HttpResponseRedirect(request.META.get('HTTP_REFERER'))
 
