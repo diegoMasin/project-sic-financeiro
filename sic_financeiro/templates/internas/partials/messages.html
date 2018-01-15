@@ -1,7 +1,7 @@
 {% for message in messages %}
     <a class="autohidebut text-hide gerado-mensagem"
        href="javascript:;"
-       onclick="$.Notification.autoHideNotify('{{ message.tags }}', 'top right', 'Mensagem:','{{ message|safe }}')">
+       onclick='$.Notification.autoHideNotify("{{ message.tags }}", "top right", "Mensagem:", "{{ message|striptags }}")'>
         &nbsp;
     </a>
 {% endfor %}

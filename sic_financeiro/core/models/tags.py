@@ -4,7 +4,7 @@ from django.db import models
 
 class Tag(models.Model):
     id = models.AutoField(primary_key=True, db_column='pk_tag')
-    nome = models.CharField(max_length=100, db_column='nome_tag')
+    nome = models.CharField(max_length=100, db_column='nome_tag', unique=True)
 
     # Usuário Owner
     usuario = models.ForeignKey(User, db_column='fk_user_tag', on_delete=models.PROTECT)

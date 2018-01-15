@@ -24,23 +24,19 @@ def listar(request):
 
 @login_required
 def salvar(request):
-    if tag_ja_existe(request.POST['nome'], None):
-        messages.warning(request, 'Tag já existente.')
+    if request.method == 'POST':
+        form = TagsForm(request.POST)
+        if form.is_valid():
+            dados = form.cleaned_data
 
-    else:
-        if request.method == 'POST':
-            form = TagsForm(request.POST)
-            if form.is_valid():
-                dados = form.cleaned_data
+            data = set_usuario_owner(request, dados)
+            salvar_tag = Tag(**data)
+            salvar_tag.save()
 
-                data = set_usuario_owner(request, dados)
-                salvar_tag = Tag(**data)
-                salvar_tag.save()
+            messages.success(request, 'Nova tag criada com Sucesso!')
 
-                messages.success(request, 'Nova tag criada com Sucesso!')
-
-            else:
-                messages.warning(request, 'O formulário não esta válido {0}'.format(form.errors))
+        else:
+            messages.warning(request, 'O formulário não esta válido {0}'.format(form.errors))
 
     return HttpResponseRedirect(request.META.get('HTTP_REFERER'))
 
@@ -69,25 +65,21 @@ def editar(request):
 
 @login_required
 def atualizar(request):
-    if tag_ja_existe(request.POST['nome'], request.POST['id']):
-        messages.warning(request, 'Esta tag já existe.')
+    if request.method == 'POST':
+        tag = Tag.objects.get(id=request.POST['id'])
+        form = TagsForm(request.POST)
+        if form.is_valid():
+            dados = form.cleaned_data
+            dados['id'] = int(request.POST['id'])
 
-    else:
-        if request.method == 'POST':
-            tag = Tag.objects.get(id=request.POST['id'])
-            form = TagsForm(request.POST)
-            if form.is_valid():
-                dados = form.cleaned_data
-                dados['id'] = int(request.POST['id'])
+            data = set_usuario_owner(request, dados)
+            salvar_tag = Tag(**data)
+            salvar_tag.save()
 
-                data = set_usuario_owner(request, dados)
-                salvar_tag = Tag(**data)
-                salvar_tag.save()
+            messages.success(request, 'Tag atualizada com Sucesso!')
 
-                messages.success(request, 'Tag atualizada com Sucesso!')
-
-            else:
-                messages.warning(request, 'O formulário não esta válido {0}'.format(form.errors))
+        else:
+            messages.warning(request, form.errors)
 
     return HttpResponseRedirect(request.META.get('HTTP_REFERER'))
 
