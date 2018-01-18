@@ -21,7 +21,7 @@ def format_positivo_negativo(value):
 
 @register.filter()
 def format_status_conta(value):
-    formato_cor = 'success' if value else 'dark'
+    formato_cor = 'success' if value else 'danger'
 
     return formato_cor
 

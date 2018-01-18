@@ -45,3 +45,18 @@ def salvar(request):
             messages.warning(request, 'O formulário não esta válido {0}'.format(form.errors))
 
     return HttpResponseRedirect(request.META.get('HTTP_REFERER'))
+
+
+@login_required
+def arquivar(request, id_conta):
+    conta = Conta.objects.get(pk=id_conta)
+    if conta.status_ativa:
+        conta.status_ativa = False
+
+    else:
+        conta.status_ativa = True
+
+    conta.save()
+    messages.success(request, 'Conta foi arquivada com sucesso.')
+
+    return HttpResponseRedirect(request.META.get('HTTP_REFERER'))
