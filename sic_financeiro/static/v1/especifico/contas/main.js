@@ -19,5 +19,23 @@
         cor_layout_padrao.prop('checked', true);
     }
 
+    //Capturando Url e trazendo dados do banco.
+    $('.modal-editar-conta').click(function(event) {
+        event.preventDefault();
+        var id = $(this).data('id');
+
+        $.ajax({
+            url: URL_EDITAR_CONTA,
+            type: 'GET',
+            dataType: 'json',
+            data: {id: id},
+            success: function(json) {
+                $('#form-editar-conta #id_nome').val(json.nome);
+                $('#form-editar-conta #id_tipo').val(json.tipo);
+                $('#id-conta-hidden').val(json.id_conta);
+            }
+        });
+    });
+
 })
 (jQuery);

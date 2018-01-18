@@ -1,8 +1,11 @@
+import json
 from datetime import datetime
 
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
+from django.core.urlresolvers import reverse
 from django.db.models import Sum
+from django.http import HttpResponse
 from django.http import HttpResponseRedirect
 from django.shortcuts import render
 
@@ -17,6 +20,7 @@ def listar(request):
     contas = Conta.objects.all().order_by('nome')
     carregador_global.context['lista_contas'] = contas
     carregador_global.context['total_saldo_atual'] = _calcula_saldo_atual(request)
+    carregador_global.context['url_editar'] = reverse('contas_editar')
 
     return render(request, '{0}/listar.html'.format(carregador_global.path_contas), carregador_global.context)
 
@@ -45,6 +49,26 @@ def salvar(request):
             messages.warning(request, 'O formulário não esta válido {0}'.format(form.errors))
 
     return HttpResponseRedirect(request.META.get('HTTP_REFERER'))
+
+
+@login_required
+def editar(request):
+    conta = Conta.objects.get(pk=int(request.GET['id']))
+    json_dict = {
+        'id_conta': conta.pk,
+        'nome': conta.nome,
+        'tipo': conta.tipo,
+        'saldo': conta.saldo,
+    }
+
+    result = json.dumps(json_dict)
+    response = HttpResponse(result, content_type='application/json')
+    return response
+
+
+@login_required
+def atualizar(request):
+    pass
 
 
 @login_required
