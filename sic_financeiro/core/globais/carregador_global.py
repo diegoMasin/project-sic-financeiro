@@ -8,6 +8,7 @@ url_termo = 'usuario_termo'
 url_home = 'pagina_inicial'
 url_contas_listar = 'contas_listar'
 url_contas_salvar = 'contas_salvar'
+url_contas_arquivar = 'contas_arquivar'
 url_tags_listar = 'tags_listar'
 url_tags_salvar = 'tags_salvar'
 url_tags_apagar = 'tags_apagar'
@@ -27,6 +28,7 @@ context = {
     'url_home': url_home,
     'url_contas_listar': url_contas_listar,
     'url_contas_salvar': url_contas_salvar,
+    'url_contas_arquivar': url_contas_arquivar,
     'url_tags_listar': url_tags_listar,
     'url_tags_salvar': url_tags_salvar,
     'url_tags_apagar': url_tags_apagar,

@@ -7,40 +7,52 @@
     SweetAlert.prototype.init = function () {
 
         //Botão de Ação Arquivar
-        $('.acao-arquivar').click(function () {
+        $('.acao-arquivar').click(function (event) {
+            event.preventDefault();
+            var url = $(this).data('url');
+            var titulo_model = $(this).data('model-title');
+            var titulo_botao = $(this).data('original-title');
+
             swal({
-                title: "Você deseja Arquivar?",
-                text: "Após arquivada, esta conta sairá dos cálculos.",
-                type: "warning",
+                title: 'Você deseja ' + titulo_botao +'?',
+                text: 'Após arquivada, esta ' + titulo_model + ' sairá dos cálculos.',
+                type: 'warning',
                 showCancelButton: true,
-                confirmButtonColor: "#DD6B55",
-                confirmButtonText: "Sim, Arquivar!",
-                cancelButtonText: "Não, Cancele!",
+                confirmButtonColor: '#DD6B55',
+                confirmButtonText: 'Sim, ' + titulo_botao + '!',
+                cancelButtonText: 'Não, Cancele!',
                 closeOnConfirm: false,
                 closeOnCancel: false
             }, function (isConfirm) {
                 if (isConfirm) {
-                    swal("Arquivada!", "Você Arquivou a conta.", "success");
+                    swal({
+                        title: 'Excluída!',
+                        text: 'Você ' + titulo_botao + '(ou) a ' + titulo_model + '.',
+                        type: 'success'
+                    }, function(){
+                        window.location = url;
+                    });
+
                 } else {
-                    swal("Cancelada", "Você não arquivou a conta.", "error");
+                    swal('Cancelada', 'Você não arquivou a ' + titulo_model + '.', 'error');
                 }
             });
         });
 
-        //Botão de Ação Arquivar
+        //Botão de Ação Excluir
         $('.acao-excluir').click(function(event) {
             event.preventDefault();
             var url = $(this).data('url');
             var titulo_model = $(this).data('model-title');
 
             swal({
-                title: "Você deseja Excluir?",
-                text: "Após excluída, esta " + titulo_model + " deixará de existir.",
-                type: "warning",
+                title: 'Você deseja Excluir?',
+                text: 'Após excluída, esta ' + titulo_model + ' deixará de existir.',
+                type: 'warning',
                 showCancelButton: true,
-                confirmButtonColor: "#DD6B55",
-                confirmButtonText: "Sim, Excluir!",
-                cancelButtonText: "Não, Cancele!",
+                confirmButtonColor: '#DD6B55',
+                confirmButtonText: 'Sim, Excluir!',
+                cancelButtonText: 'Não, Cancele!',
                 closeOnConfirm: false,
                 closeOnCancel: false
             }, function (isConfirm) {
@@ -53,7 +65,7 @@
                         window.location = url;
                     });
                 } else {
-                    swal("Cancelada", "Você não excluiu a " + titulo_model + ".", "error");
+                    swal('Cancelada', 'Você não excluiu a ' + titulo_model + '.', 'error');
                 }
             });
         });
