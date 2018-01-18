@@ -1,0 +1,13 @@
+{% extends 'internas/layout.html' %}
+
+{% load core_tags %}
+{% load staticfiles %}
+
+{% block js_specific %}
+    <script>
+        URL_EDITAR_TAG = "{{ url_editar }}";
+    </script>
+{% endblock js_specific %}
+
+{% block css %}
+{% endblock css %}

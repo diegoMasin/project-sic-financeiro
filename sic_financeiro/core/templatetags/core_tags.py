@@ -1,5 +1,6 @@
 # coding: utf-8
 from django import template
+from django.utils.html import strip_tags
 
 from sic_financeiro.core.masks import Money
 
@@ -23,3 +24,8 @@ def format_status_conta(value):
     formato_cor = 'success' if value else 'dark'
 
     return formato_cor
+
+
+@register.filter(is_safe=True)
+def message_erro_custom(value):
+    return strip_tags(value).replace('dict_values', '').replace('([[', '').replace(']])', '').replace('\'', '').replace('.', '. ')
