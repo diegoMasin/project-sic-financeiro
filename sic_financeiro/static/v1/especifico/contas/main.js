@@ -8,6 +8,7 @@
 
     // RESET CAMPOS SEMPRE QUE ABRIR MODAL
     $('#menu-criar-conta').click(function () {
+        $('#form-criar-conta').attr('action', URL_SALVAR_CONTA);
         resetando_campos_form();
     });
 
@@ -20,9 +21,11 @@
     }
 
     //Capturando Url e trazendo dados do banco.
-    $('.modal-editar-conta').click(function(event) {
+    $('.menu-editar-conta').click(function(event) {
+        resetando_campos_form();
         event.preventDefault();
         var id = $(this).data('id');
+        $('#form-criar-conta').attr('action', URL_ATUALIZAR_CONTA);
 
         $.ajax({
             url: URL_EDITAR_CONTA,
@@ -30,13 +33,12 @@
             dataType: 'json',
             data: {id: id},
             success: function(json) {
-                $('#form-editar-conta #id_nome').val(json.nome);
-                $('#form-editar-conta #id_tipo').val(json.tipo);
+                $('#form-criar-conta #id_nome').val(json.nome);
+                $('#form-criar-conta #id_tipo').val(json.tipo);
                 var saldo_edita = 'R$ ' + json.saldo.replace('.', ',');
-                $('#form-editar-conta #id_saldo').val(saldo_edita);
+                $('#form-criar-conta #id_saldo').val(saldo_edita);
                 var cor = json.cor_layout;
-                $('#form-editar-conta input:radio[name=cor_layout]:checked').prop('checked', false)
-                $('#form-editar-conta').find("input[value=" + cor + "]").prop('checked', true);
+                $('#form-criar-conta').find("input[value=" + cor + "]").prop('checked', true);
                 $('#id-conta-hidden').val(json.id_conta);
             }
         });

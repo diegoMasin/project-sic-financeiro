@@ -20,7 +20,7 @@ class Conta(models.Model):
     )
 
     AZUL = 'primary'
-    VERDE = 'sucess'
+    VERDE = 'success'
     LARANJA = 'warning'
     VERMELHO = 'danger'
     ROSA = 'pink'

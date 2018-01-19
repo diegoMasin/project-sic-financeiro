@@ -1,7 +1,6 @@
 import json
 from datetime import datetime
 
-from decimal import Decimal
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 from django.core.urlresolvers import reverse
@@ -21,7 +20,9 @@ def listar(request):
     contas = Conta.objects.all().order_by('nome')
     carregador_global.context['lista_contas'] = contas
     carregador_global.context['total_saldo_atual'] = _calcula_saldo_atual(request)
-    carregador_global.context['url_editar'] = reverse('contas_editar')
+    carregador_global.context['url_salvar_conta'] = reverse('contas_salvar')
+    carregador_global.context['url_editar_conta'] = reverse('contas_editar')
+    carregador_global.context['url_atualizar_conta'] = reverse('contas_atualizar')
 
     return render(request, '{0}/listar.html'.format(carregador_global.path_contas), carregador_global.context)
 
