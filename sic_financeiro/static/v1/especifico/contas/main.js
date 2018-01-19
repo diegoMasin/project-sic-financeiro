@@ -32,6 +32,10 @@
             success: function(json) {
                 $('#form-editar-conta #id_nome').val(json.nome);
                 $('#form-editar-conta #id_tipo').val(json.tipo);
+                saldo = 'R$ ' + json.saldo.replace('.', ',');
+                $('#form-editar-conta #id_saldo').val(saldo);
+                var cor = json.cor_layout;
+                $('#form-editar-conta').find("input[value=" + cor + "]").prop('checked', true);
                 $('#id-conta-hidden').val(json.id_conta);
             }
         });

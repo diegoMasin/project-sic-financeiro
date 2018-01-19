@@ -1,6 +1,7 @@
 import json
 from datetime import datetime
 
+from decimal import Decimal
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 from django.core.urlresolvers import reverse
@@ -58,7 +59,8 @@ def editar(request):
         'id_conta': conta.pk,
         'nome': conta.nome,
         'tipo': conta.tipo,
-        'saldo': conta.saldo,
+        'saldo': str(conta.saldo),
+        'cor_layout': conta.cor_layout,
     }
 
     result = json.dumps(json_dict)
