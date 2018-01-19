@@ -70,7 +70,25 @@ def editar(request):
 
 @login_required
 def atualizar(request):
-    pass
+    if request.method == 'POST':
+        id_conta = request.POST['id']
+        conta = Conta.objects.get(id=int(id_conta))
+        form = ContasForm(request.POST)
+        if form.is_valid():
+            dados = form.cleaned_data
+            dados['id'] = int(id_conta)
+            dados['data_inicio'] = conta.data_inicio
+
+            data = set_usuario_owner(request, dados)
+            salvar_tag = Conta(**data)
+            salvar_tag.save()
+
+            messages.success(request, 'Conta atualizada com Sucesso!')
+
+        else:
+            messages.warning(request, form.errors.values())
+
+    return HttpResponseRedirect(request.META.get('HTTP_REFERER'))
 
 
 @login_required

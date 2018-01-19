@@ -1,9 +1,9 @@
 (function ($) {
-    var nome = $('#id_nome');
-    var tipo = $('#id_tipo');
-    var saldo = $('#id_saldo');
-    var cor_layout = $("input[name = 'cor_layout']");
-    var cor_layout_padrao = $("input[name = 'cor_layout'][value = 'CINZA']");
+    var nome = $('#form-criar-conta #id_nome');
+    var tipo = $('#form-criar-conta #id_tipo');
+    var saldo = $('#form-criar-conta #id_saldo');
+    var cor_layout = $("#form-criar-conta input[name = 'cor_layout']");
+    var cor_layout_padrao = $("#form-criar-conta input[name = 'cor_layout'][value = 'default']");
 
 
     // RESET CAMPOS SEMPRE QUE ABRIR MODAL
@@ -32,9 +32,10 @@
             success: function(json) {
                 $('#form-editar-conta #id_nome').val(json.nome);
                 $('#form-editar-conta #id_tipo').val(json.tipo);
-                saldo = 'R$ ' + json.saldo.replace('.', ',');
-                $('#form-editar-conta #id_saldo').val(saldo);
+                var saldo_edita = 'R$ ' + json.saldo.replace('.', ',');
+                $('#form-editar-conta #id_saldo').val(saldo_edita);
                 var cor = json.cor_layout;
+                $('#form-editar-conta input:radio[name=cor_layout]:checked').prop('checked', false)
                 $('#form-editar-conta').find("input[value=" + cor + "]").prop('checked', true);
                 $('#id-conta-hidden').val(json.id_conta);
             }
