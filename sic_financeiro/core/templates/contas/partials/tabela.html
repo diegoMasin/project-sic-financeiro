@@ -32,9 +32,11 @@
                 </span>
             </td>
             <td>
-                <a href="#" class="m-r-15" data-toggle="tooltip" data-placement="top" data-original-title="Editar">
+                <a class="menu-editar-conta" data-toggle="modal" data-target="#criar-conta-modal" data-id="{{ conta.pk }}"
+                   data-original-title="Editar">
                     <i class="fa fa-pencil text-white"></i>
                 </a>
+                &nbsp;&nbsp;
                 {% if conta.status_ativa %}
                     <a class="acao-arquivar" data-url="{% url url_contas_arquivar conta.pk %}" data-model-title="Conta"
                        data-toggle="tooltip" data-placement="top" data-original-title="Arquivar">

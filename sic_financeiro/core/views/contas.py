@@ -1,8 +1,11 @@
+import json
 from datetime import datetime
 
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
+from django.core.urlresolvers import reverse
 from django.db.models import Sum
+from django.http import HttpResponse
 from django.http import HttpResponseRedirect
 from django.shortcuts import render
 
@@ -17,6 +20,9 @@ def listar(request):
     contas = Conta.objects.all().order_by('nome')
     carregador_global.context['lista_contas'] = contas
     carregador_global.context['total_saldo_atual'] = _calcula_saldo_atual(request)
+    carregador_global.context['url_salvar_conta'] = reverse('contas_salvar')
+    carregador_global.context['url_editar_conta'] = reverse('contas_editar')
+    carregador_global.context['url_atualizar_conta'] = reverse('contas_atualizar')
 
     return render(request, '{0}/listar.html'.format(carregador_global.path_contas), carregador_global.context)
 
@@ -43,6 +49,45 @@ def salvar(request):
 
         else:
             messages.warning(request, 'O formulário não esta válido {0}'.format(form.errors))
+
+    return HttpResponseRedirect(request.META.get('HTTP_REFERER'))
+
+
+@login_required
+def editar(request):
+    conta = Conta.objects.get(pk=int(request.GET['id']))
+    json_dict = {
+        'id_conta': conta.pk,
+        'nome': conta.nome,
+        'tipo': conta.tipo,
+        'saldo': str(conta.saldo),
+        'cor_layout': conta.cor_layout,
+    }
+
+    result = json.dumps(json_dict)
+    response = HttpResponse(result, content_type='application/json')
+    return response
+
+
+@login_required
+def atualizar(request):
+    if request.method == 'POST':
+        id_conta = request.POST['id']
+        conta = Conta.objects.get(id=int(id_conta))
+        form = ContasForm(request.POST)
+        if form.is_valid():
+            dados = form.cleaned_data
+            dados['id'] = int(id_conta)
+            dados['data_inicio'] = conta.data_inicio
+
+            data = set_usuario_owner(request, dados)
+            salvar_tag = Conta(**data)
+            salvar_tag.save()
+
+            messages.success(request, 'Conta atualizada com Sucesso!')
+
+        else:
+            messages.warning(request, form.errors.values())
 
     return HttpResponseRedirect(request.META.get('HTTP_REFERER'))
 

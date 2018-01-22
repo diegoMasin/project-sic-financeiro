@@ -10,6 +10,8 @@ urlpatterns = [
     url(r'^contas/$', contas.listar, name='contas_listar'),
     url(r'^contas/salvar$', contas.salvar, name='contas_salvar'),
     url(r'^contas/arquivar/(?P<id_conta>(\d+))/$', contas.arquivar, name='contas_arquivar'),
+    url(r'^contas/editar/$', contas.editar, name='contas_editar'),
+    url(r'^contas/atualizar/$', contas.atualizar, name='contas_atualizar'),
 
 
     url(r'^tags/$', tags.listar, name='tags_listar'),
