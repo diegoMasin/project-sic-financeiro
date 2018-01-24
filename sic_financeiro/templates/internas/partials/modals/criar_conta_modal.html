@@ -9,6 +9,7 @@
             <form id="form-criar-conta" role="form" method="post" action="{% url url_contas_salvar %}">
                 {% csrf_token %}
                 <div class="modal-body bg-dark text-white">
+                    <input id="id-conta-hidden" type="hidden" name="id">
                     {% include 'contas/partials/campos_modal.html' %}
                 </div>
                 <div class="modal-footer bg-dark no-border">

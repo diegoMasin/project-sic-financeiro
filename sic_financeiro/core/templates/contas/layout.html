@@ -4,6 +4,11 @@
 {% load staticfiles %}
 
 {% block js %}
+    <script>
+        URL_SALVAR_CONTA = "{{ url_salvar_conta }}";
+        URL_EDITAR_CONTA = "{{ url_editar_conta }}";
+        URL_ATUALIZAR_CONTA = "{{ url_atualizar_conta }}";
+    </script>
 {% endblock js %}
 
 {% block css %}

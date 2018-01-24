@@ -1,0 +1,28 @@
+{% load core_tags%}
+
+<table class="table table-striped">
+    <thead>
+    <tr>
+        <th>Nome</th>
+        <th width="120">Ações</th>
+    </tr>
+    </thead>
+    <tbody>
+        {% for tag in lista_tags %}
+            <tr>
+                <td>{{ tag.nome }}</td>
+                <td>
+                    <a class="modal-editar-tag" data-toggle="modal" data-target="#editar-tag-modal"
+                       data-id="{{ tag.pk }}" data-original-title="Editar">
+                        <i class="fa fa-pencil text-white"></i>
+                    </a>
+                    &nbsp;&nbsp;
+                    <a class="acao-excluir" data-url="{% url url_tags_apagar tag.pk %}" data-model-title="Tag"
+                       data-toggle="tooltip" data-placement="top" data-original-title="Excluir">
+                        <i class="fa fa-trash text-white"></i>
+                    </a>
+                </td>
+            </tr>
+        {% endfor %}
+    </tbody>
+</table>
