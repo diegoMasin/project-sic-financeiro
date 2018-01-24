@@ -1,5 +1,6 @@
 # coding: utf-8
 from django import template
+from django.utils.html import strip_tags
 
 from sic_financeiro.core.masks import Money
 
@@ -8,7 +9,7 @@ register = template.Library()
 
 @register.filter()
 def to_mask_money(value):
-    return Money().format(value)
+    return Money().format(value) if value else 'R$ 0,00'
 
 
 @register.filter()
@@ -20,6 +21,11 @@ def format_positivo_negativo(value):
 
 @register.filter()
 def format_status_conta(value):
-    formato_cor = 'success' if value else 'dark'
+    formato_cor = 'success' if value else 'danger'
 
     return formato_cor
+
+
+@register.filter(is_safe=True)
+def message_erro_custom(value):
+    return strip_tags(value).replace('dict_values', '').replace('([[', '').replace(']])', '').replace('\'', '').replace('.', '. ')

@@ -27,3 +27,4 @@ class ContasForm(forms.ModelForm):
 
     def clean_saldo(self):
         return utils.remove_moeda(self.cleaned_data['saldo'])
+
