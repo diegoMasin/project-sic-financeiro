@@ -3,6 +3,7 @@ from django.conf.urls import url
 from sic_financeiro.core.views import home
 from sic_financeiro.core.views import contas
 from sic_financeiro.core.views import tags
+from sic_financeiro.core.views import tipo_despesa
 
 urlpatterns = [
     url(r'^$', home.pagina_inicial, name='pagina_inicial'),
@@ -19,4 +20,10 @@ urlpatterns = [
     url(r'^tags/apagar/(?P<id_tag>(\d+))/$', tags.apagar, name='tags_apagar'),
     url(r'^tags/editar/$', tags.editar, name='tags_editar'),
     url(r'^tags/atualizar/$', tags.atualizar, name='tags_atualizar'),
+
+    url(r'^tipo_despesa/$', tipo_despesa.listar, name='tipo_despesa_listar'),
+    url(r'^tipo_despesa/salvar/$', tipo_despesa.salvar, name='tipo_despesa_salvar'),
+    url(r'^tipo_despesa/apagar/(?P<id_tipo_despesa>(\d+))/$', tipo_despesa.apagar, name='tipo_despesa_apagar'),
+    url(r'^tipo_despesa/editar/$', tipo_despesa.editar, name='tipo_despesa_editar'),
+    url(r'^tipo_despesa/atualizar/$', tipo_despesa.atualizar, name='tipo_despesa_atualizar'),
 ]
