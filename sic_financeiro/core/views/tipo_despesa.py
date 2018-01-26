@@ -10,6 +10,7 @@ from django.http import HttpResponseRedirect
 from django.shortcuts import render
 
 from sic_financeiro.core.forms.contas import ContasForm
+from sic_financeiro.core.forms.tipo_despesa import TipoDespesaForm
 from sic_financeiro.core.globais import carregador_global
 from sic_financeiro.core.globais.utils import set_usuario_owner
 from sic_financeiro.core.models.contas import Conta
@@ -20,6 +21,7 @@ from sic_financeiro.core.models.tipo_despesa import TipoDespesa
 def listar(request):
     tipo_despesa = TipoDespesa.objects.all().order_by('nome')
     carregador_global.context['lista_tipo_despesa'] = tipo_despesa
+    carregador_global.context['form_tipo_despesa'] = TipoDespesaForm
     carregador_global.context['url_salvar_tipo_despesa'] = reverse('tipo_despesa_salvar')
     carregador_global.context['url_editar_tipo_despesa'] = reverse('tipo_despesa_editar')
     carregador_global.context['url_atualizar_tipo_despesa'] = reverse('tipo_despesa_atualizar')
@@ -29,21 +31,20 @@ def listar(request):
 
 @login_required
 def salvar(request):
-    form = ContasForm(request.POST)
+    form = TipoDespesaForm(request.POST)
 
     if request.method == 'POST':
         if form.is_valid():
             dados = form.cleaned_data
-            dados['data_inicio'] = datetime.now()
 
             data = set_usuario_owner(request, dados)
-            salvar_conta = Conta(**data)
-            salvar_conta.save()
+            salvar_tipo = TipoDespesa(**data)
+            salvar_tipo.save()
 
-            messages.success(request, 'Nova conta criada com Sucesso!')
+            messages.success(request, 'Novo Tipo de Despesa criado com Sucesso!')
 
         else:
-            messages.warning(request, 'O formulário não esta válido {0}'.format(form.errors))
+            messages.warning(request, '{0} '.format(form.errors))
 
     return HttpResponseRedirect(request.META.get('HTTP_REFERER'))
 

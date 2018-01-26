@@ -1,0 +1,24 @@
+{% load staticfiles %}
+<div id="tipo-despesa-modal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;">
+    <div class="modal-dialog">
+        <div class="modal-content no-border">
+            <div class="modal-header bg-dark text-white">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                <h4 class="modal-title">Criar Tipo de Despesa</h4>
+            </div>
+            <form id="form-tipo-despesa" role="form" method="post" action="{% url url_tipo_despesa_salvar %}">
+                {% csrf_token %}
+                <div class="modal-body bg-dark text-white">
+                    <input id="id-tipo-despesa-hidden" type="hidden" name="id">
+                    {% include 'tipo_despesa/partials/campos_modal.html' %}
+                </div>
+                <div class="modal-footer bg-dark no-border">
+                    <button type="submit" id="salvar-tipo-despesa" class="btn btn-outline-success cursor-pointer">
+                        <i class="fa fa-save m-r-5"></i>
+                        <spam>Salvar</spam>
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

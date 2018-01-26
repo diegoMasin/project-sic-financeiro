@@ -8,7 +8,8 @@ class TipoDespesaForm(forms.ModelForm):
         model = TipoDespesa
         fields = ['nome', 'cor_layout']
         labels = {
-            'nome': 'Nome'
+            'nome': 'Nome',
+            'cor_layout': 'Cor'
         }
         widgets = {
             'nome': forms.TextInput(attrs={'class': 'form-control', 'required': True, 'placeholder': 'tag'})
