@@ -13,23 +13,18 @@ from sic_financeiro.core.forms.contas import ContasForm
 from sic_financeiro.core.globais import carregador_global
 from sic_financeiro.core.globais.utils import set_usuario_owner
 from sic_financeiro.core.models.contas import Conta
+from sic_financeiro.core.models.tipo_despesa import TipoDespesa
 
 
 @login_required
 def listar(request):
-    contas = Conta.objects.all().order_by('nome')
-    carregador_global.context['lista_contas'] = contas
-    carregador_global.context['total_saldo_atual'] = _calcula_saldo_atual(request)
-    carregador_global.context['url_salvar_conta'] = reverse('contas_salvar')
-    carregador_global.context['url_editar_conta'] = reverse('contas_editar')
-    carregador_global.context['url_atualizar_conta'] = reverse('contas_atualizar')
+    tipo_despesa = TipoDespesa.objects.all().order_by('nome')
+    carregador_global.context['lista_tipo_despesa'] = tipo_despesa
+    carregador_global.context['url_salvar_tipo_despesa'] = reverse('tipo_despesa_salvar')
+    carregador_global.context['url_editar_tipo_despesa'] = reverse('tipo_despesa_editar')
+    carregador_global.context['url_atualizar_tipo_despesa'] = reverse('tipo_despesa_atualizar')
 
-    return render(request, '{0}/listar.html'.format(carregador_global.path_contas), carregador_global.context)
-
-
-def _calcula_saldo_atual(request):
-    usuario = request.user
-    return Conta.objects.filter(usuario=usuario, status_ativa=True).aggregate(Sum('saldo'))['saldo__sum']
+    return render(request, '{0}/listar.html'.format(carregador_global.path_tipo_despesa), carregador_global.context)
 
 
 @login_required

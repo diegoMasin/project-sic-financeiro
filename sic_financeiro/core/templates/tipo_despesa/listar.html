@@ -1,0 +1,18 @@
+{% extends 'tipo_despesa/layout.html' %}
+
+{% load core_tags %}
+{% load staticfiles %}
+
+{% block titulo_pagina %}
+    Tipos de Despesas
+{% endblock titulo_pagina %}
+
+{% block content %}
+    <div class="row">
+        <div class="col-12">
+            <div class="card-box text-white">
+            {% include 'tipo_despesa/partials/tabela.html' %}
+            </div>
+        </div>
+    </div>
+{% endblock content %}
