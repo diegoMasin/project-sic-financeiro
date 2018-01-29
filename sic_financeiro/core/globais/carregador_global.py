@@ -1,6 +1,8 @@
 from sic_financeiro.core.forms.contas import ContasForm
 from sic_financeiro.core.forms.tags import TagsForm
 
+mensagem_error = 'Ocorreu um erro. Tente novamente mais tarde.'
+
 url_login = 'usuario_login'
 url_logout = 'usuario_logout'
 url_signup = 'usuario_signup'

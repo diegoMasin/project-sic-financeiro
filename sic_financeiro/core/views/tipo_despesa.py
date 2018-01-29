@@ -1,10 +1,8 @@
 import json
-from datetime import datetime
 
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 from django.core.urlresolvers import reverse
-from django.db.models import Sum
 from django.http import HttpResponse
 from django.http import HttpResponseRedirect
 from django.shortcuts import render
@@ -89,15 +87,13 @@ def atualizar(request):
 
 
 @login_required
-def apagar(request, id_conta):
-    conta = Conta.objects.get(pk=id_conta)
-    if conta.status_ativa:
-        conta.status_ativa = False
+def apagar(request, id_tipo_despesa):
+    try:
+        tipo_despesa = TipoDespesa.objects.filter(pk=id_tipo_despesa)
+        tipo_despesa.delete()
 
-    else:
-        conta.status_ativa = True
+    except Exception:
+        messages.error(request, carregador_global.mensagem_error)
 
-    conta.save()
-    messages.success(request, 'Conta foi arquivada com sucesso.')
-
+    messages.success(request, 'Tipo de Despesa removida com sucesso.')
     return HttpResponseRedirect(request.META.get('HTTP_REFERER'))
