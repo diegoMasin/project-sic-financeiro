@@ -74,20 +74,21 @@ def atualizar(request):
     if request.method == 'POST':
         id_conta = request.POST['id']
         conta = Conta.objects.get(id=int(id_conta))
-        form = ContasForm(request.POST)
-        if form.is_valid():
-            dados = form.cleaned_data
-            dados['id'] = int(id_conta)
-            dados['data_inicio'] = conta.data_inicio
+        form = ContasForm(request.POST, instance=conta)
+        if form.has_changed():
+            if form.is_valid():
+                dados = form.cleaned_data
+                dados['id'] = int(id_conta)
+                dados['data_inicio'] = conta.data_inicio
 
-            data = set_usuario_owner(request, dados)
-            salvar_conta = Conta(**data)
-            salvar_conta.save()
+                data = set_usuario_owner(request, dados)
+                salvar_conta = Conta(**data)
+                salvar_conta.save()
 
-            messages.success(request, 'Conta atualizada com Sucesso!')
+                messages.success(request, 'Conta atualizada com Sucesso!')
 
-        else:
-            messages.warning(request, form.errors.values())
+            else:
+                messages.warning(request, form.errors.values())
 
     return HttpResponseRedirect(request.META.get('HTTP_REFERER'))
 

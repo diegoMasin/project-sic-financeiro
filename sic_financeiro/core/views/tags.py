@@ -67,19 +67,20 @@ def editar(request):
 def atualizar(request):
     if request.method == 'POST':
         tag = Tag.objects.get(id=request.POST['id'])
-        form = TagsForm(request.POST)
-        if form.is_valid():
-            dados = form.cleaned_data
-            dados['id'] = int(request.POST['id'])
+        form = TagsForm(request.POST, instance=tag)
+        if form.has_changed():
+            if form.is_valid():
+                dados = form.cleaned_data
+                dados['id'] = int(request.POST['id'])
 
-            data = set_usuario_owner(request, dados)
-            salvar_tag = Tag(**data)
-            salvar_tag.save()
+                data = set_usuario_owner(request, dados)
+                salvar_tag = Tag(**data)
+                salvar_tag.save()
 
-            messages.success(request, 'Tag atualizada com Sucesso!')
+                messages.success(request, 'Tag atualizada com Sucesso!')
 
-        else:
-            messages.warning(request, form.errors.values())
+            else:
+                messages.warning(request, form.errors.values())
 
     return HttpResponseRedirect(request.META.get('HTTP_REFERER'))
 

@@ -67,20 +67,21 @@ def editar(request):
 def atualizar(request):
     if request.method == 'POST':
         id_tipo_despesa = request.POST['id']
-        tipo_despesa = TipoDespesa.objects.get(id=int(id_tipo_despesa))
-        form = TipoDespesaForm(request.POST)
-        if form.is_valid():
-            dados = form.cleaned_data
-            dados['id'] = int(id_tipo_despesa)
+        tipo_despesa = TipoDespesa.objects.get(pk=int(id_tipo_despesa))
+        form = TipoDespesaForm(request.POST, instance=tipo_despesa)
+        if form.has_changed():
+            if form.is_valid():
+                dados = form.cleaned_data
+                dados['id'] = int(id_tipo_despesa)
 
-            data = set_usuario_owner(request, dados)
-            salvar_tipo_despesa = TipoDespesa(**data)
-            salvar_tipo_despesa.save()
+                data = set_usuario_owner(request, dados)
+                salvar_tipo_despesa = TipoDespesa(**data)
+                salvar_tipo_despesa.save()
 
-            messages.success(request, TextosPadroes.atualizar_sucesso_o(NOME_MODELO))
+                messages.success(request, TextosPadroes.atualizar_sucesso_o(NOME_MODELO))
 
-        else:
-            messages.warning(request, form.errors.values())
+            else:
+                messages.warning(request, form.errors.values())
 
     return HttpResponseRedirect(request.META.get('HTTP_REFERER'))
 
@@ -94,5 +95,5 @@ def apagar(request, id_tipo_despesa):
     except Exception:
         messages.error(request, TextosPadroes.error_padrao())
 
-    messages.success(request, 'Tipo de Despesa removida com sucesso.')
+    messages.success(request, TextosPadroes.apagar_sucesso_o(NOME_MODELO))
     return HttpResponseRedirect(request.META.get('HTTP_REFERER'))
