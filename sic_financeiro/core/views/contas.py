@@ -81,8 +81,8 @@ def atualizar(request):
             dados['data_inicio'] = conta.data_inicio
 
             data = set_usuario_owner(request, dados)
-            salvar_tag = Conta(**data)
-            salvar_tag.save()
+            salvar_conta = Conta(**data)
+            salvar_conta.save()
 
             messages.success(request, 'Conta atualizada com Sucesso!')
 

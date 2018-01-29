@@ -94,10 +94,6 @@ class TextosPadroes(object):
         return _('Selecione...')
 
     @staticmethod
-    def error_modify():
-        return _('Não é possível modificar, entre em contato com o Setor de TI.')
-
-    @staticmethod
     def filtro_sem_registros():
         return _('Não há registros respectivos ao(s) filtro(s) selecionado(s).')
 
@@ -116,3 +112,31 @@ class TextosPadroes(object):
     @staticmethod
     def usuario_nao_logado():
         return _('Usuário não esta logado, por favor efetuar o login!')
+
+    @staticmethod
+    def error_padrao():
+        return _('Ocorreu um erro. Tente novamente mais tarde.')
+
+    @staticmethod
+    def apagar_sucesso_o(modelo):
+        return _('{0} removido com sucesso.'.format(modelo))
+
+    @staticmethod
+    def apagar_sucesso_a(modelo):
+        return _('{0} removida com sucesso.'.format(modelo))
+
+    @staticmethod
+    def atualizar_sucesso_o(modelo):
+        return _('{0} atualizado com sucesso.'.format(modelo))
+
+    @staticmethod
+    def atualizar_sucesso_a(modelo):
+        return _('{0} atualizada com sucesso.'.format(modelo))
+
+    @staticmethod
+    def salvar_sucesso_o(modelo):
+        return _('Novo {0} criado com sucesso.'.format(modelo))
+
+    @staticmethod
+    def salvar_sucesso_a(modelo):
+        return _('Nova {0} criada com sucesso.'.format(modelo))

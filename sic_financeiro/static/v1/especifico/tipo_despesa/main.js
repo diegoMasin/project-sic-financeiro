@@ -12,6 +12,7 @@
     // RESSETAR CAMPOS TODA VEZ QUE ABRIR PARA CRIAR NOVO
     $('#criar-tipo-despesa').click(function() {
         resetando_campos_form();
+        $('#form-tipo-despesa').attr('action', URL_SALVAR_TIPO_DESPESA);
     });
 
     //Capturando Url e trazendo dados do banco.

@@ -7,12 +7,14 @@ from django.http import HttpResponse
 from django.http import HttpResponseRedirect
 from django.shortcuts import render
 
-from sic_financeiro.core.forms.contas import ContasForm
+from sic_financeiro.core.default_texts import TextosPadroes
 from sic_financeiro.core.forms.tipo_despesa import TipoDespesaForm
 from sic_financeiro.core.globais import carregador_global
 from sic_financeiro.core.globais.utils import set_usuario_owner
-from sic_financeiro.core.models.contas import Conta
 from sic_financeiro.core.models.tipo_despesa import TipoDespesa
+
+
+NOME_MODELO = 'Tipo de Despesa'
 
 
 @login_required
@@ -39,7 +41,7 @@ def salvar(request):
             salvar_tipo = TipoDespesa(**data)
             salvar_tipo.save()
 
-            messages.success(request, 'Novo Tipo de Despesa criado com Sucesso!')
+            messages.success(request, TextosPadroes.salvar_sucesso_o(NOME_MODELO))
 
         else:
             messages.warning(request, '{0} '.format(form.errors))
@@ -64,19 +66,18 @@ def editar(request):
 @login_required
 def atualizar(request):
     if request.method == 'POST':
-        id_conta = request.POST['id']
-        conta = Conta.objects.get(id=int(id_conta))
-        form = ContasForm(request.POST)
+        id_tipo_despesa = request.POST['id']
+        tipo_despesa = TipoDespesa.objects.get(id=int(id_tipo_despesa))
+        form = TipoDespesaForm(request.POST)
         if form.is_valid():
             dados = form.cleaned_data
-            dados['id'] = int(id_conta)
-            dados['data_inicio'] = conta.data_inicio
+            dados['id'] = int(id_tipo_despesa)
 
             data = set_usuario_owner(request, dados)
-            salvar_tag = Conta(**data)
-            salvar_tag.save()
+            salvar_tipo_despesa = TipoDespesa(**data)
+            salvar_tipo_despesa.save()
 
-            messages.success(request, 'Conta atualizada com Sucesso!')
+            messages.success(request, TextosPadroes.atualizar_sucesso_o(NOME_MODELO))
 
         else:
             messages.warning(request, form.errors.values())
@@ -91,7 +92,7 @@ def apagar(request, id_tipo_despesa):
         tipo_despesa.delete()
 
     except Exception:
-        messages.error(request, carregador_global.mensagem_error)
+        messages.error(request, TextosPadroes.error_padrao())
 
     messages.success(request, 'Tipo de Despesa removida com sucesso.')
     return HttpResponseRedirect(request.META.get('HTTP_REFERER'))
