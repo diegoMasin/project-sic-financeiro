@@ -7,7 +7,7 @@
         <th width="120">Ações</th>
     </tr>
     </thead>
-    <tbody>
+    <tbody class="font-18">
     {% for tipo_despesa in lista_tipo_despesa %}
         <tr>
             <td scope="row" class="text-center">
@@ -15,12 +15,12 @@
             </td>
             <td>{{ tipo_despesa.nome }}</td>
             <td>
-                <a class="menu-editar-tipo-despesa" data-toggle="modal" data-target="#criar-tipo-despesa-modal" data-id="{{ tipo_despesa.pk }}"
+                <a class="menu-editar-tipo-despesa cursor-pointer " data-toggle="modal" data-target="#criar-tipo-despesa-modal" data-id="{{ tipo_despesa.pk }}"
                    data-original-title="Editar">
                     <i class="fa fa-pencil text-white"></i>
                 </a>
                 &nbsp;&nbsp;
-                <a class="acao-excluir" data-url="{% url url_tipo_despesa_apagar tipo_despesa.pk %}" data-model-title="Tipo Despesa"
+                <a class="acao-excluir cursor-pointer " data-url="{% url url_tipo_despesa_apagar tipo_despesa.pk %}" data-model-title="Tipo Despesa"
                    data-toggle="tooltip" data-placement="top" data-original-title="Exlcuir">
                     <i class="fa fa-trash text-white"></i>
                 </a>

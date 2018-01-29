@@ -11,7 +11,7 @@
         <th width="120">Ações</th>
     </tr>
     </thead>
-    <tbody>
+    <tbody class="font-18">
     {% for conta in lista_contas %}
         <tr>
             <td scope="row" class="text-center">
@@ -32,18 +32,18 @@
                 </span>
             </td>
             <td>
-                <a class="menu-editar-conta" data-toggle="modal" data-target="#criar-conta-modal" data-id="{{ conta.pk }}"
+                <a class="menu-editar-conta cursor-pointer" data-toggle="modal" data-target="#criar-conta-modal" data-id="{{ conta.pk }}"
                    data-original-title="Editar">
                     <i class="fa fa-pencil text-white"></i>
                 </a>
                 &nbsp;&nbsp;
                 {% if conta.status_ativa %}
-                    <a class="acao-arquivar" data-url="{% url url_contas_arquivar conta.pk %}" data-model-title="Conta"
+                    <a class="acao-arquivar cursor-pointer" data-url="{% url url_contas_arquivar conta.pk %}" data-model-title="Conta"
                        data-toggle="tooltip" data-placement="top" data-original-title="Arquivar">
                         <i class="fa fa-archive text-white"></i>
                     </a>
                 {% else %}
-                    <a class="acao-arquivar" data-url="{% url url_contas_arquivar conta.pk %}" data-model-title="Conta"
+                    <a class="acao-arquivar cursor-pointer" data-url="{% url url_contas_arquivar conta.pk %}" data-model-title="Conta"
                        data-toggle="tooltip" data-placement="top" data-original-title="Reativar">
                         <i class="fa fa-refresh text-white"></i>
                     </a>
