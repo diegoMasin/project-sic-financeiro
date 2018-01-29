@@ -49,13 +49,11 @@ def salvar(request):
 
 @login_required
 def editar(request):
-    conta = Conta.objects.get(pk=int(request.GET['id']))
+    tipo_despesa = TipoDespesa.objects.get(pk=int(request.GET['id']))
     json_dict = {
-        'id_conta': conta.pk,
-        'nome': conta.nome,
-        'tipo': conta.tipo,
-        'saldo': str(conta.saldo),
-        'cor_layout': conta.cor_layout,
+        'id_tipo_despesa': tipo_despesa.pk,
+        'nome': tipo_despesa.nome,
+        'cor_layout': tipo_despesa.cor_layout,
     }
 
     result = json.dumps(json_dict)
