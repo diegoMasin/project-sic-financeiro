@@ -147,3 +147,12 @@ FILE_UPLOAD_HANDLERS = (
 LOGIN_URL = '/login'
 
 ADMINS = (('Diego Masin', 'diegoifce@gmail.com'),)
+
+# Configuração de parâmetros para Email
+MAILER_LIST = ['diegoifce@gmail.com']
+EMAIL_HOST = 'smtp.zoho.com'
+EMAIL_HOST_USER = 'contato@maximumtech.com.br'
+EMAIL_HOST_PASSWORD = 'trizayferetrigan'
+EMAIL_PORT = 465
+EMAIL_USE_TLS = True
+DEFAULT_FROM_EMAIL = 'contato@maximumtech.com.br'
