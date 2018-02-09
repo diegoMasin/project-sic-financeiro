@@ -25,11 +25,18 @@ url_tipo_despesa_apagar = 'tipo_despesa_apagar'
 url_tipo_despesa_editar = 'tipo_despesa_editar'
 url_tipo_despesa_atualizar = 'tipo_despesa_atualizar'
 
+url_tipo_receita_listar = 'tipo_receita_listar'
+url_tipo_receita_salvar = 'tipo_receita_salvar'
+url_tipo_receita_apagar = 'tipo_receita_apagar'
+url_tipo_receita_editar = 'tipo_receita_editar'
+url_tipo_receita_atualizar = 'tipo_receita_atualizar'
+
 path_login = 'login'
 path_home = 'pagina_inicial'
 path_contas = 'contas'
 path_tags = 'tags'
 path_tipo_despesa = 'tipo_despesa'
+path_tipo_receita = 'tipo_receita'
 
 context = {
     'url_login': url_login,
@@ -55,6 +62,12 @@ context = {
     'url_tipo_despesa_apagar': url_tipo_despesa_apagar,
     'url_tipo_despesa_editar': url_tipo_despesa_editar,
     'url_tipo_despesa_atualizar': url_tipo_despesa_atualizar,
+
+    'url_tipo_receita_listar': url_tipo_receita_listar,
+    'url_tipo_receita_salvar': url_tipo_receita_salvar,
+    'url_tipo_receita_apagar': url_tipo_receita_apagar,
+    'url_tipo_receita_editar': url_tipo_receita_editar,
+    'url_tipo_receita_atualizar': url_tipo_receita_atualizar,
 
     'path_login': path_login,
     'path_home': path_home,

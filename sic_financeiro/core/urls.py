@@ -4,6 +4,7 @@ from sic_financeiro.core.views import home
 from sic_financeiro.core.views import contas
 from sic_financeiro.core.views import tags
 from sic_financeiro.core.views import tipo_despesa
+from sic_financeiro.core.views import tipo_receita
 
 urlpatterns = [
     url(r'^$', home.pagina_inicial, name='pagina_inicial'),
@@ -26,4 +27,10 @@ urlpatterns = [
     url(r'^tipo_despesa/apagar/(?P<id_tipo_despesa>(\d+))/$', tipo_despesa.apagar, name='tipo_despesa_apagar'),
     url(r'^tipo_despesa/editar/$', tipo_despesa.editar, name='tipo_despesa_editar'),
     url(r'^tipo_despesa/atualizar/$', tipo_despesa.atualizar, name='tipo_despesa_atualizar'),
+
+    url(r'^tipo_receita/$', tipo_receita.listar, name='tipo_receita_listar'),
+    url(r'^tipo_receita/salvar/$', tipo_receita.salvar, name='tipo_receita_salvar'),
+    url(r'^tipo_receita/apagar/(?P<id_tipo_receita>(\d+))/$', tipo_receita.apagar, name='tipo_receita_apagar'),
+    url(r'^tipo_receita/editar/$', tipo_receita.editar, name='tipo_receita_editar'),
+    url(r'^tipo_receita/atualizar/$', tipo_receita.atualizar, name='tipo_receita_atualizar'),
 ]

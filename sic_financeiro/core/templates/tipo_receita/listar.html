@@ -1,0 +1,25 @@
+{% extends 'tipo_receita/layout.html' %}
+
+{% load core_tags %}
+{% load staticfiles %}
+
+{% block titulo_pagina %}
+    Tipos de Receitas
+{% endblock titulo_pagina %}
+
+{% block content %}
+    <div class="row">
+        <div class="col-12">
+            <div class="card-box text-white">
+                <a id="criar-tipo-receita" href="#" data-toggle="modal" data-target="#tipo-receita-modal"
+                   class="btn btn-primary waves-effect waves-light m-b-15 rounded-circle" title="Adicionar">
+                    <i class="fa fa-plus fa-2x"></i>
+                </a>
+
+                {% include 'tipo_receita/partials/tabela.html' %}
+            </div>
+        </div>
+    </div>
+
+    {% include 'internas/partials/modals/tipo_receita_modal.html' %}
+{% endblock content %}

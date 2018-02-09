@@ -1,11 +1,11 @@
 from django import forms
-from sic_financeiro.core.models.tipo_despesa import TipoDespesa
+from sic_financeiro.core.models.tipo_receita import TipoReceita
 
 
-class TipoDespesaForm(forms.ModelForm):
+class TipoReceitaForm(forms.ModelForm):
 
     class Meta:
-        model = TipoDespesa
+        model = TipoReceita
         fields = ['nome', 'cor_layout']
         labels = {
             'nome': 'Nome',
