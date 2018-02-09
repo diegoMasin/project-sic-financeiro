@@ -1,0 +1,18 @@
+{% extends 'internas/layout.html' %}
+
+{% load core_tags %}
+{% load staticfiles %}
+
+{% block js %}
+    <script>
+        URL_SALVAR_TIPO_RECEITA = "{{ url_salvar_tipo_receita }}";
+        URL_EDITAR_TIPO_RECEITA = "{{ url_editar_tipo_receita }}";
+        URL_ATUALIZAR_TIPO_RECEITA = "{{ url_atualizar_tipo_receita }}";
+    </script>
+
+    <script src="{% static 'v1/especifico/tipo_receita/main.js' %}"></script>
+
+{% endblock js %}
+
+{% block css %}
+{% endblock css %}
