@@ -19,10 +19,17 @@ url_tags_apagar = 'tags_apagar'
 url_tags_editar = 'tags_editar'
 url_tags_atualizar = 'tags_atualizar'
 
+url_tipo_despesa_listar = 'tipo_despesa_listar'
+url_tipo_despesa_salvar = 'tipo_despesa_salvar'
+url_tipo_despesa_apagar = 'tipo_despesa_apagar'
+url_tipo_despesa_editar = 'tipo_despesa_editar'
+url_tipo_despesa_atualizar = 'tipo_despesa_atualizar'
+
 path_login = 'login'
 path_home = 'pagina_inicial'
 path_contas = 'contas'
 path_tags = 'tags'
+path_tipo_despesa = 'tipo_despesa'
 
 context = {
     'url_login': url_login,
@@ -30,6 +37,7 @@ context = {
     'url_signup': url_signup,
     'url_termo': url_termo,
     'url_home': url_home,
+
     'url_contas_listar': url_contas_listar,
     'url_contas_salvar': url_contas_salvar,
     'url_contas_arquivar': url_contas_arquivar,
@@ -41,6 +49,12 @@ context = {
     'url_tags_apagar': url_tags_apagar,
     'url_tags_editar': url_tags_editar,
     'url_tags_atualizar': url_tags_atualizar,
+
+    'url_tipo_despesa_listar': url_tipo_despesa_listar,
+    'url_tipo_despesa_salvar': url_tipo_despesa_salvar,
+    'url_tipo_despesa_apagar': url_tipo_despesa_apagar,
+    'url_tipo_despesa_editar': url_tipo_despesa_editar,
+    'url_tipo_despesa_atualizar': url_tipo_despesa_atualizar,
 
     'path_login': path_login,
     'path_home': path_home,

@@ -1,0 +1,18 @@
+{% extends 'internas/layout.html' %}
+
+{% load core_tags %}
+{% load staticfiles %}
+
+{% block js %}
+    <script>
+        URL_SALVAR_TIPO_DESPESA = "{{ url_salvar_tipo_despesa }}";
+        URL_EDITAR_TIPO_DESPESA = "{{ url_editar_tipo_despesa }}";
+        URL_ATUALIZAR_TIPO_DESPESA = "{{ url_atualizar_tipo_despesa }}";
+    </script>
+
+    <script src="{% static 'v1/especifico/tipo_despesa/main.js' %}"></script>
+
+{% endblock js %}
+
+{% block css %}
+{% endblock css %}

@@ -1,0 +1,25 @@
+{% extends 'tipo_despesa/layout.html' %}
+
+{% load core_tags %}
+{% load staticfiles %}
+
+{% block titulo_pagina %}
+    Tipos de Despesas
+{% endblock titulo_pagina %}
+
+{% block content %}
+    <div class="row">
+        <div class="col-12">
+            <div class="card-box text-white">
+                <a id="criar-tipo-despesa" href="#" data-toggle="modal" data-target="#tipo-despesa-modal"
+                   class="btn btn-primary waves-effect waves-light m-b-15 rounded-circle" title="Adicionar">
+                    <i class="fa fa-plus fa-2x"></i>
+                </a>
+
+                {% include 'tipo_despesa/partials/tabela.html' %}
+            </div>
+        </div>
+    </div>
+
+    {% include 'internas/partials/modals/tipo_despesa_modal.html' %}
+{% endblock content %}
