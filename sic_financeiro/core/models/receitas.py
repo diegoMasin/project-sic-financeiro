@@ -6,8 +6,16 @@ from sic_financeiro.core.models.tipo_receita import TipoReceita
 
 
 class Receita(models.Model):
+    ID_REPETICAO_MESES = 1
+    ID_REPETICAO_DIAS = 2
+    ID_REPETICAO_SEMANAS = 3
+    ID_REPETICAO_ANOS = 4
+
     TIPO_REPETICAO = (
-        ('')
+        (ID_REPETICAO_MESES, 'Meses'),
+        (ID_REPETICAO_DIAS, 'Dias'),
+        (ID_REPETICAO_SEMANAS, 'Semanas'),
+        (ID_REPETICAO_ANOS, 'Anos'),
     )
 
     id = models.AutoField(primary_key=True, db_column='pk_receita')
@@ -23,8 +31,8 @@ class Receita(models.Model):
 
     repeticao = models.BooleanField(default=False, db_column='repeticao_receita')
     receita_fixa = models.BooleanField(default=False, db_column='fixa_receita')
-    tipo_repeticao = models.IntegerField(choices= db_column='num_repeticoes_receita')
-    numero_repeticoes = models.IntegerField(db_column='num_repeticoes_receita')
+    tipo_repeticao = models.IntegerField(choices=TIPO_REPETICAO, db_column='tipo_repeticao_receita', blank=True, null=True)
+    numero_repeticoes = models.IntegerField(db_column='num_repeticoes_receita', blank=True, null=True)
 
     # Usuário Owner
     usuario = models.ForeignKey(User, db_column='fk_user_tipo_despesa', on_delete=models.PROTECT)
