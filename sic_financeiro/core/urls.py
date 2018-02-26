@@ -5,6 +5,7 @@ from sic_financeiro.core.views import contas
 from sic_financeiro.core.views import tags
 from sic_financeiro.core.views import tipo_despesa
 from sic_financeiro.core.views import tipo_receita
+from sic_financeiro.core.views import receitas
 
 urlpatterns = [
     url(r'^$', home.pagina_inicial, name='pagina_inicial'),
@@ -33,4 +34,6 @@ urlpatterns = [
     url(r'^tipo_receita/apagar/(?P<id_tipo_receita>(\d+))/$', tipo_receita.apagar, name='tipo_receita_apagar'),
     url(r'^tipo_receita/editar/$', tipo_receita.editar, name='tipo_receita_editar'),
     url(r'^tipo_receita/atualizar/$', tipo_receita.atualizar, name='tipo_receita_atualizar'),
+
+    url(r'^receitas/$', receitas.listar, name='receitas_listar'),
 ]

@@ -29,6 +29,7 @@ class Receita(models.Model):
     tags = models.CharField(max_length=200, db_column='tags_receita', null=True, blank=True)
     observacoes = models.CharField(max_length=100, db_column='observacoes_receita', null=True, blank=True)
 
+    # Atributos da repetição
     repeticao = models.BooleanField(default=False, db_column='repeticao_receita')
     receita_fixa = models.BooleanField(default=False, db_column='fixa_receita')
     tipo_repeticao = models.IntegerField(choices=TIPO_REPETICAO, db_column='tipo_repeticao_receita', blank=True, null=True)

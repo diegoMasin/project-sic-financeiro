@@ -1,5 +1,6 @@
 from sic_financeiro.core.forms.contas import ContasForm
 from sic_financeiro.core.forms.tags import TagsForm
+from sic_financeiro.core.forms.receitas import ReceitasForm
 
 url_login = 'usuario_login'
 url_logout = 'usuario_logout'
@@ -31,12 +32,15 @@ url_tipo_receita_apagar = 'tipo_receita_apagar'
 url_tipo_receita_editar = 'tipo_receita_editar'
 url_tipo_receita_atualizar = 'tipo_receita_atualizar'
 
+url_receitas_listar = 'receitas_listar'
+
 path_login = 'login'
 path_home = 'pagina_inicial'
 path_contas = 'contas'
 path_tags = 'tags'
 path_tipo_despesa = 'tipo_despesa'
 path_tipo_receita = 'tipo_receita'
+path_receitas = 'receitas'
 
 context = {
     'url_login': url_login,
@@ -69,11 +73,15 @@ context = {
     'url_tipo_receita_editar': url_tipo_receita_editar,
     'url_tipo_receita_atualizar': url_tipo_receita_atualizar,
 
+    'url_receitas_listar': url_receitas_listar,
+
     'path_login': path_login,
     'path_home': path_home,
     'path_contas': path_contas,
     'path_tags': path_tags,
+    'path_receitas': path_receitas,
 
     'form_contas': ContasForm(),
     'form_tags': TagsForm(),
+    'form_receitas': ReceitasForm(),
 }

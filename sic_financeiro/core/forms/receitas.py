@@ -4,7 +4,7 @@ from sic_financeiro.core.globais import utils
 from sic_financeiro.core.models import Receita
 
 
-class ContasForm(forms.ModelForm):
+class ReceitasForm(forms.ModelForm):
     saldo = forms.CharField(
         label='Valor',
         widget=forms.TextInput(attrs={
