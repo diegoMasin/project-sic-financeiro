@@ -23,18 +23,19 @@
 
             <td>{{ receita.data_receita|date:'d/m/Y' }}</td>
 
-            <td>{{ receita.descricao }}</td>
+            <td>{{ receita.descricao }}&nbsp;&nbsp;<i class="fa fa-caret-down text-info" title="{{ receita.observacoes }}"></i></td>
 
             <td>
-                {{ receita.tipo }}
-                {% if receita.tags %}
-                    <span class="badge label-table badge-info">
-                         - {{ receita.tags }}
-                    </span>
-                {% endif %}
+                <i class="ion-information-circled font-18 text-{{ receita.tipo.cor_layout }}"></i>
+                {{ receita.tipo }} <span class="badge label-table badge-info font-italic">{{ receita.tags }}</span>
             </td>
 
-            <td>{{ receita.conta }}</td>
+            <td>
+                <i class="fa fa-{{ receita.conta.get_simbolo_tipo_conta }} font-14 text-{{ receita.conta.cor_layout }}"
+                   title="{{ receita.conta.get_nome_tipo_conta }}">
+                </i>
+                {{ receita.conta }}
+            </td>
 
             <td class="text-{{ receita.valor|format_positivo_negativo }}">
                 {{ receita.valor|to_mask_money }}

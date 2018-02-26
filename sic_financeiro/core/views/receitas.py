@@ -33,7 +33,7 @@ def listar(request):
 def _calcula_total_atual(receitas):
     return receitas.aggregate(Sum('valor'))['valor__sum']
 
-#
+
 # @login_required
 # def salvar(request):
 #     form = ContasForm(request.POST)
@@ -54,7 +54,7 @@ def _calcula_total_atual(receitas):
 #
 #     return HttpResponseRedirect(request.META.get('HTTP_REFERER'))
 #
-#
+
 # @login_required
 # def editar(request):
 #     conta = Conta.objects.get(pk=int(request.GET['id']))

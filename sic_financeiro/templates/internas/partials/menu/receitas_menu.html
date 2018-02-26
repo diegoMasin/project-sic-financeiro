@@ -3,7 +3,11 @@
     <a href="javascript:void(0);" class="waves-effect waves-primary"><i class="fa fa-plus"></i> <span> Receitas </span>
         <span class="menu-arrow"></span></a>
     <ul class="list-unstyled">
-        <li><a href="#">Nova Receita</a></li>
+        <li>
+            <a id="menu-criar-receita" href="#" data-toggle="modal" data-target="#receita-modal">
+                Nova Receita
+            </a>
+        </li>
         <li><a href="{% url url_receitas_listar %}">Listar Receitas</a></li>
         <li><a href="{% url url_tipo_receita_listar %}">Tipo de Receita</a></li>
     </ul>
