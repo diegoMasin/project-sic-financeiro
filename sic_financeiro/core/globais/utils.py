@@ -1,4 +1,5 @@
 from decimal import Decimal
+from datetime import date
 
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
@@ -31,3 +32,11 @@ def set_usuario_owner(request, data):
         messages.warning(request, TextosPadroes.usuario_nao_logado())
 
     return data
+
+
+def mes_atual():
+    return date.today().month
+
+
+def ano_atual():
+    return date.today().year

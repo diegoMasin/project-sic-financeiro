@@ -1,19 +1,19 @@
-{% extends 'contas/layout.html' %}
+{% extends 'receitas/layout.html' %}
 
 {% load core_tags %}
 {% load staticfiles %}
 
 {% block titulo_pagina %}
-    Minhas Contas
+    Minhas Receitas
 {% endblock titulo_pagina %}
 
 {% block content %}
     <div class="row">
         <div class="col-12">
             <div class="card-box text-white">
-            {% include 'contas/partials/tabela.html' %}
+            {% include 'receitas/partials/tabela.html' %}
             </div>
         </div>
     </div>
-    {% include 'contas/partials/total.html' %}
+    {% include 'receitas/partials/totais.html' %}
 {% endblock content %}

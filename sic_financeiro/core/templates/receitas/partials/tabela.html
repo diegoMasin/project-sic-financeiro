@@ -4,50 +4,59 @@
     <thead>
     <tr>
         <th>&nbsp;</th>
-        <th data-toggle="true">Nome</th>
-        <th>Saldo Atual</th>
-        <th>Saldo Final do Mês</th>
-        <th>Status da Conta</th>
+        <th>Data</th>
+        <th data-toggle="true">Descricao</th>
+        <th>Tipo de Receita</th>
+        <th>Conta</th>
+        <th>Valor</th>
         <th width="120">Ações</th>
     </tr>
     </thead>
     <tbody class="font-18">
-    {% for conta in lista_contas %}
+    {% for receita in lista_receitas %}
         <tr>
             <td scope="row" class="text-center">
-                <i class="fa fa-{{ conta.get_simbolo_tipo_conta }} font-18 text-{{ conta.cor_layout }}"
-                   title="{{ conta.get_nome_tipo_conta }}">
+                <i class="fa fa-{{ receita.get_simbolo_receita_recebida.0 }}
+                font-18 text-{{ receita.get_simbolo_receita_recebida.1 }}" >
                 </i>
             </td>
-            <td>{{ conta.nome }}</td>
-            <td class="text-{{ conta.saldo|format_positivo_negativo }}">
-                {{ conta.saldo|to_mask_money }}
-            </td>
-            <td class="text-{{ conta.saldo|format_positivo_negativo }}">
-                {{ conta.saldo|to_mask_money }}
-            </td>
+
+            <td>{{ receita.data_receita|date:'d/m/Y' }}</td>
+
+            <td>{{ receita.descricao }}</td>
+
             <td>
-                <span class="badge label-table badge-{{ conta.status_ativa|format_status_conta }}">
-                    {{ conta.get_status_nome }}
-                </span>
-            </td>
-            <td>
-                <a class="menu-editar-conta cursor-pointer" data-toggle="modal" data-target="#criar-conta-modal" data-id="{{ conta.pk }}"
-                   data-original-title="Editar">
-                    <i class="fa fa-pencil text-white"></i>
-                </a>
-                &nbsp;&nbsp;
-                {% if conta.status_ativa %}
-                    <a class="acao-arquivar cursor-pointer" data-url="{% url url_contas_arquivar conta.pk %}" data-model-title="Conta"
-                       data-toggle="tooltip" data-placement="top" data-original-title="Arquivar">
-                        <i class="fa fa-archive text-white"></i>
-                    </a>
-                {% else %}
-                    <a class="acao-arquivar cursor-pointer" data-url="{% url url_contas_arquivar conta.pk %}" data-model-title="Conta"
-                       data-toggle="tooltip" data-placement="top" data-original-title="Reativar">
-                        <i class="fa fa-refresh text-white"></i>
-                    </a>
+                {{ receita.tipo }}
+                {% if receita.tags %}
+                    <span class="badge label-table badge-info">
+                         - {{ receita.tags }}
+                    </span>
                 {% endif %}
+            </td>
+
+            <td>{{ receita.conta }}</td>
+
+            <td class="text-{{ receita.valor|format_positivo_negativo }}">
+                {{ receita.valor|to_mask_money }}
+            </td>
+
+            <td>
+{#                <a class="menu-editar-conta cursor-pointer" data-toggle="modal" data-target="#criar-conta-modal" data-id="{{ conta.pk }}"#}
+{#                   data-original-title="Editar">#}
+{#                    <i class="fa fa-pencil text-white"></i>#}
+{#                </a>#}
+{#                &nbsp;&nbsp;#}
+{#                {% if conta.status_ativa %}#}
+{#                    <a class="acao-arquivar cursor-pointer" data-url="{% url url_contas_arquivar conta.pk %}" data-model-title="Conta"#}
+{#                       data-toggle="tooltip" data-placement="top" data-original-title="Arquivar">#}
+{#                        <i class="fa fa-archive text-white"></i>#}
+{#                    </a>#}
+{#                {% else %}#}
+{#                    <a class="acao-arquivar cursor-pointer" data-url="{% url url_contas_arquivar conta.pk %}" data-model-title="Conta"#}
+{#                       data-toggle="tooltip" data-placement="top" data-original-title="Reativar">#}
+{#                        <i class="fa fa-refresh text-white"></i>#}
+{#                    </a>#}
+{#                {% endif %}#}
             </td>
         </tr>
     {% endfor %}

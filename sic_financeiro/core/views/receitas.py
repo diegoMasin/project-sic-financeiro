@@ -12,24 +12,26 @@ from django.shortcuts import render
 from sic_financeiro.core.forms.contas import ContasForm
 from sic_financeiro.core.globais import carregador_global
 from sic_financeiro.core.globais.utils import set_usuario_owner
+from sic_financeiro.core.globais.utils import mes_atual
+from sic_financeiro.core.globais.utils import ano_atual
 from sic_financeiro.core.models.receitas import Receita
 
 
 @login_required
 def listar(request):
-    receitas = Receita.objects.filter(usuario=request.user).order_by('nome')
+    receitas = Receita.objects.filter(
+        usuario=request.user, data_receita__year=ano_atual(), data_receita__month=mes_atual()).order_by('-data_receita')
     carregador_global.context['lista_receitas'] = receitas
-    # carregador_global.context['total_saldo_atual'] = _calcula_saldo_atual(request)
+    carregador_global.context['total_saldo_atual'] = _calcula_total_atual(receitas)
     # carregador_global.context['url_salvar_conta'] = reverse('contas_salvar')
     # carregador_global.context['url_editar_conta'] = reverse('contas_editar')
     # carregador_global.context['url_atualizar_conta'] = reverse('contas_atualizar')
 
-    return render(request, '{0}/listar.html'.format(carregador_global.path_contas), carregador_global.context)
+    return render(request, '{0}/listar.html'.format(carregador_global.path_receitas), carregador_global.context)
 
 
-# def _calcula_saldo_atual(request):
-#     usuario = request.user
-#     return Conta.objects.filter(usuario=usuario, status_ativa=True).aggregate(Sum('saldo'))['saldo__sum']
+def _calcula_total_atual(receitas):
+    return receitas.aggregate(Sum('valor'))['valor__sum']
 
 #
 # @login_required
