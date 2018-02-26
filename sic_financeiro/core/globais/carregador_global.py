@@ -2,6 +2,8 @@ from sic_financeiro.core.forms.contas import ContasForm
 from sic_financeiro.core.forms.tags import TagsForm
 from sic_financeiro.core.forms.receitas import ReceitasForm
 
+
+# URL'S DO SISTEMA
 url_login = 'usuario_login'
 url_logout = 'usuario_logout'
 url_signup = 'usuario_signup'
@@ -34,6 +36,7 @@ url_tipo_receita_atualizar = 'tipo_receita_atualizar'
 
 url_receitas_listar = 'receitas_listar'
 
+# PASTAS DO TEMPLATE
 path_login = 'login'
 path_home = 'pagina_inicial'
 path_contas = 'contas'
@@ -42,6 +45,7 @@ path_tipo_despesa = 'tipo_despesa'
 path_tipo_receita = 'tipo_receita'
 path_receitas = 'receitas'
 
+# ENVIO DAS VARIAVEIS VIA CONTEXT
 context = {
     'url_login': url_login,
     'url_logout': url_logout,

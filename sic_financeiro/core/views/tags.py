@@ -15,7 +15,7 @@ from sic_financeiro.core.models.tags import Tag
 
 @login_required
 def listar(request):
-    tags = Tag.objects.all().order_by('nome')
+    tags = Tag.objects.filter(usuario=request.user).order_by('nome')
     carregador_global.context['lista_tags'] = tags
     carregador_global.context['url_editar'] = reverse('tags_editar')
 

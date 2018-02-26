@@ -19,7 +19,7 @@ NOME_MODELO = 'Tipo de Despesa'
 
 @login_required
 def listar(request):
-    tipo_despesa = TipoDespesa.objects.all().order_by('nome')
+    tipo_despesa = TipoDespesa.objects.filter(usuario=request.user).order_by('nome')
     carregador_global.context['lista_tipo_despesa'] = tipo_despesa
     carregador_global.context['form_tipo_despesa'] = TipoDespesaForm
     carregador_global.context['url_salvar_tipo_despesa'] = reverse('tipo_despesa_salvar')

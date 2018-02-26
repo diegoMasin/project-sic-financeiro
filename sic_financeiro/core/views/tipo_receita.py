@@ -19,7 +19,7 @@ NOME_MODELO = 'Tipo de Receita'
 
 @login_required
 def listar(request):
-    tipo_receita = TipoReceita.objects.all().order_by('nome')
+    tipo_receita = TipoReceita.objects.filter(usuario=request.user).order_by('nome')
     carregador_global.context['lista_tipo_receita'] = tipo_receita
     carregador_global.context['form_tipo_receita'] = TipoReceitaForm
     carregador_global.context['url_salvar_tipo_receita'] = reverse('tipo_receita_salvar')

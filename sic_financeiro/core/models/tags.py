@@ -16,3 +16,7 @@ class Tag(models.Model):
     def __str__(self):
         to_string = self.nome
         return to_string
+
+    def save(self, force_insert=False, force_update=False):
+        self.nome = self.nome.lower()
+        super(Tag, self).save(force_insert, force_update)

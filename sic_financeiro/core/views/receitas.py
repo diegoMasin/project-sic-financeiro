@@ -17,7 +17,7 @@ from sic_financeiro.core.models.receitas import Receita
 
 @login_required
 def listar(request):
-    receitas = Receita.objects.all().order_by('nome')
+    receitas = Receita.objects.filter(usuario=request.user).order_by('nome')
     carregador_global.context['lista_receitas'] = receitas
     # carregador_global.context['total_saldo_atual'] = _calcula_saldo_atual(request)
     # carregador_global.context['url_salvar_conta'] = reverse('contas_salvar')

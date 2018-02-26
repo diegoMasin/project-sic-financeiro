@@ -10,7 +10,7 @@
     <tbody class="font-18">
         {% for tag in lista_tags %}
             <tr>
-                <td>{{ tag.nome }}</td>
+                <td class="text-lowercase">{{ tag.nome }}</td>
                 <td>
                     <a class="modal-editar-tag cursor-pointer" data-toggle="modal" data-target="#editar-tag-modal"
                        data-id="{{ tag.pk }}" data-original-title="Editar">

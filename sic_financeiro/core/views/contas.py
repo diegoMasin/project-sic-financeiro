@@ -17,7 +17,7 @@ from sic_financeiro.core.models.contas import Conta
 
 @login_required
 def listar(request):
-    contas = Conta.objects.all().order_by('nome')
+    contas = Conta.objects.filter(usuario=request.user).order_by('nome')
     carregador_global.context['lista_contas'] = contas
     carregador_global.context['total_saldo_atual'] = _calcula_saldo_atual(request)
     carregador_global.context['url_salvar_conta'] = reverse('contas_salvar')

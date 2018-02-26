@@ -13,3 +13,6 @@ class TagsForm(forms.ModelForm):
         widgets = {
             'nome': forms.TextInput(attrs={'class': 'form-control', 'required': True})
         }
+
+    def clean_nome(self):
+        return self.cleaned_data['nome'].lower()
